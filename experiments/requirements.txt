@@ -1,0 +1,17 @@
+# Requirements for Regional Slang Lexicon Experiments
+# Python >= 3.10 required (tested on GPU server conda env 'slang')
+#
+# Before running, copy .env.example to .env and fill in your API keys:
+#   cp .env.example .env
+#   # edit .env with your keys, then:
+#   set -a && source experiments/.env && set +a && python experiments/run_all.py
+torch>=2.0
+transformers>=4.30,<4.41
+sentence-transformers>=2.2,<3.0
+pandas>=1.5
+jieba>=0.42
+faiss-cpu>=1.7
+numpy>=1.23
+scikit-learn>=1.2
+python-Levenshtein>=0.21
+openai>=1.0

@@ -1,0 +1,155 @@
+{
+  "_content_hash": "46205f738569d422a1d88c9169960367902ed78e749501de34745a0278b2470d",
+  "entries": [
+    {
+      "id": "outage_01",
+      "text": "停电是指电力供应中断，用户无法正常用电的状态",
+      "category": "OUTAGE"
+    },
+    {
+      "id": "outage_02",
+      "text": "断电、没电、黑了都表示供电中断",
+      "category": "OUTAGE"
+    },
+    {
+      "id": "outage_03",
+      "text": "计划停电是供电局提前通知的检修停电",
+      "category": "OUTAGE"
+    },
+    {
+      "id": "repair_01",
+      "text": "报修是用户向供电局报告电力故障请求维修",
+      "category": "REPAIR"
+    },
+    {
+      "id": "repair_02",
+      "text": "抢修是供电局紧急处理电力故障的行为",
+      "category": "REPAIR"
+    },
+    {
+      "id": "equip_01",
+      "text": "变压器是改变电压等级的电力设备",
+      "category": "EQUIPMENT"
+    },
+    {
+      "id": "equip_02",
+      "text": "电表是计量用电量的仪表装置",
+      "category": "EQUIPMENT"
+    },
+    {
+      "id": "equip_03",
+      "text": "空气开关是一种低压断路器保护装置",
+      "category": "EQUIPMENT"
+    },
+    {
+      "id": "fault_01",
+      "text": "跳闸是断路器自动断开电路的保护动作",
+      "category": "FAULT"
+    },
+    {
+      "id": "fault_02",
+      "text": "短路是电路中电流不经过负载直接连通",
+      "category": "FAULT"
+    },
+    {
+      "id": "fault_03",
+      "text": "漏电是电流通过非正常路径流入大地",
+      "category": "FAULT"
+    },
+    {
+      "id": "fault_04",
+      "text": "电线老化破损可能导致漏电或短路事故",
+      "category": "FAULT"
+    },
+    {
+      "id": "bill_01",
+      "text": "电费是用户按用电量支付的费用",
+      "category": "BILLING"
+    },
+    {
+      "id": "bill_02",
+      "text": "欠费停电是因未缴纳电费而被停止供电",
+      "category": "BILLING"
+    },
+    {
+      "id": "dialect_01",
+      "text": "扎实在玉溪方言中表示程度严重非常厉害，例如扎实老火表示非常严重",
+      "category": "DIALECT"
+    },
+    {
+      "id": "dialect_02",
+      "text": "鬼火在玉溪方言中表示愤怒烦躁发火，鬼火绿表示非常生气",
+      "category": "DIALECT"
+    },
+    {
+      "id": "dialect_03",
+      "text": "给有在玉溪方言中是疑问句表示是否有，例如给有电表示有没有电",
+      "category": "DIALECT"
+    },
+    {
+      "id": "dialect_04",
+      "text": "着炸在玉溪方言中表示被损坏短路烧毁，着电表示触电",
+      "category": "DIALECT"
+    },
+    {
+      "id": "dialect_05",
+      "text": "木电电在玉溪方言中表示完全没有电了，木表示没有",
+      "category": "DIALECT"
+    },
+    {
+      "id": "dialect_06",
+      "text": "咋个在玉溪方言中表示怎么为什么，例如咋个停电表示怎么停电了",
+      "category": "DIALECT"
+    },
+    {
+      "id": "dialect_07",
+      "text": "老火在玉溪方言中表示严重、糟糕、厉害，例如线路老火表示线路故障严重",
+      "category": "DIALECT"
+    },
+    {
+      "id": "dialect_08",
+      "text": "不来电呢在玉溪方言中表示没有来电，呢是语气助词",
+      "category": "DIALECT"
+    },
+    {
+      "id": "dialect_09",
+      "text": "黑古隆冬在玉溪方言中形容一片漆黑、停电后的黑暗状态",
+      "category": "DIALECT"
+    },
+    {
+      "id": "dialect_10",
+      "text": "不鬼火在玉溪方言中表示不生气、算了、没事了",
+      "category": "DIALECT"
+    },
+    {
+      "id": "dialect_11",
+      "text": "冇在玉溪方言中表示没有，例如冇交表示没有交费，冇住表示没有住",
+      "category": "DIALECT"
+    },
+    {
+      "id": "dialect_12",
+      "text": "挨在玉溪方言中表示把、被、和，例如挨电费交了表示把电费交了",
+      "category": "DIALECT"
+    },
+    {
+      "id": "morph_01",
+      "text": "玉溪方言中「咋个」+X组合如「咋个整」「咋个怎」是疑问句式结构而非独立的方言词汇，不应收录",
+      "category": "DIALECT"
+    },
+    {
+      "id": "morph_02",
+      "text": "玉溪方言中「X呢」组合如「烂呢」「摘呢」通常只是名词加语气助词，不构成独立的方言词汇",
+      "category": "DIALECT"
+    },
+    {
+      "id": "morph_03",
+      "text": "玉溪方言中「给有」+X组合如「给有看看」「给有回」是疑问句式，不是独立词汇",
+      "category": "DIALECT"
+    },
+    {
+      "id": "morph_04",
+      "text": "玉溪方言中「X噶」「X嘛」「X哈」结尾的组合是语气词附加，通常不是独立方言词汇",
+      "category": "DIALECT"
+    }
+  ]
+}
