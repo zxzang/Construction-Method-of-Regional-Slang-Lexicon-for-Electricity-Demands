@@ -1,0 +1,128 @@
+{
+  "calibration": {
+    "n_samples": 46,
+    "template": "calibration_template.csv",
+    "results": "calibration_results.json"
+  },
+  "experiments": {
+    "baseline_margin_rule": {
+      "dialect_precision": 1.0,
+      "power_dialect_precision": 0.16,
+      "avg_confidence": 0.906,
+      "category_distribution": {
+        "NOT_POWER": 21,
+        "OUTAGE": 2,
+        "FAULT": 1,
+        "BILLING": 1
+      },
+      "detail": {
+        "n_total": 25,
+        "n_dialect": 25,
+        "n_power": 4,
+        "n_power_dialect": 4
+      },
+      "evaluator_queries": 0,
+      "dialect_lexicon_size": 25,
+      "power_dialect_lexicon_size": 4
+    },
+    "ablation_margin_llm": {
+      "dialect_precision": 1.0,
+      "power_dialect_precision": 0.125,
+      "avg_confidence": 0.8953,
+      "category_distribution": {
+        "NOT_POWER": 28,
+        "OUTAGE": 2,
+        "FAULT": 1,
+        "BILLING": 1
+      },
+      "detail": {
+        "n_total": 32,
+        "n_dialect": 32,
+        "n_power": 4,
+        "n_power_dialect": 4
+      },
+      "evaluator_queries": 0,
+      "dialect_lexicon_size": 32,
+      "power_dialect_lexicon_size": 4
+    },
+    "ablation_tdcal_rule": {
+      "dialect_precision": 1.0,
+      "power_dialect_precision": 0.1481,
+      "avg_confidence": 0.9056,
+      "category_distribution": {
+        "NOT_POWER": 23,
+        "OUTAGE": 2,
+        "BILLING": 1,
+        "OTHER": 1
+      },
+      "detail": {
+        "n_total": 27,
+        "n_dialect": 27,
+        "n_power": 4,
+        "n_power_dialect": 4
+      },
+      "evaluator_queries": 0,
+      "dialect_lexicon_size": 27,
+      "power_dialect_lexicon_size": 4
+    },
+    "random_llm": {
+      "dialect_precision": 1.0,
+      "power_dialect_precision": 0.1212,
+      "avg_confidence": 0.8976,
+      "category_distribution": {
+        "NOT_POWER": 29,
+        "OUTAGE": 2,
+        "OTHER": 1,
+        "REPAIR": 1
+      },
+      "detail": {
+        "n_total": 33,
+        "n_dialect": 33,
+        "n_power": 4,
+        "n_power_dialect": 4
+      },
+      "evaluator_queries": 0,
+      "dialect_lexicon_size": 33,
+      "power_dialect_lexicon_size": 4
+    },
+    "proposed_tdcal_llm": {
+      "dialect_precision": 1.0,
+      "power_dialect_precision": 0.125,
+      "avg_confidence": 0.8984,
+      "category_distribution": {
+        "NOT_POWER": 28,
+        "OUTAGE": 2,
+        "BILLING": 1,
+        "OTHER": 1
+      },
+      "detail": {
+        "n_total": 32,
+        "n_dialect": 32,
+        "n_power": 4,
+        "n_power_dialect": 4
+      },
+      "evaluator_queries": 0,
+      "dialect_lexicon_size": 32,
+      "power_dialect_lexicon_size": 4
+    },
+    "ablation_hard_gate_rule": {
+      "dialect_precision": 1.0,
+      "power_dialect_precision": 0.625,
+      "avg_confidence": 0.9188,
+      "category_distribution": {
+        "OUTAGE": 3,
+        "NOT_POWER": 3,
+        "FAULT": 2
+      },
+      "detail": {
+        "n_total": 8,
+        "n_dialect": 8,
+        "n_power": 5,
+        "n_power_dialect": 5
+      },
+      "evaluator_queries": 0,
+      "dialect_lexicon_size": 8,
+      "power_dialect_lexicon_size": 5
+    }
+  }
+}

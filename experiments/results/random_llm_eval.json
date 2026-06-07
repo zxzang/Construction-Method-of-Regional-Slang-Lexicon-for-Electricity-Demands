@@ -1,0 +1,289 @@
+{
+  "experiment": "random_llm",
+  "summary": {
+    "dialect_precision": 1.0,
+    "power_dialect_precision": 0.1212,
+    "avg_confidence": 0.8976,
+    "category_distribution": {
+      "NOT_POWER": 29,
+      "OUTAGE": 2,
+      "OTHER": 1,
+      "REPAIR": 1
+    },
+    "detail": {
+      "n_total": 33,
+      "n_dialect": 33,
+      "n_power": 4,
+      "n_power_dialect": 4
+    },
+    "evaluator_queries": 0,
+    "dialect_lexicon_size": 33,
+    "power_dialect_lexicon_size": 4
+  },
+  "evaluations": [
+    {
+      "word": "整烂咋个",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言疑问句'咋个'+动词'整烂'，表示怎么弄坏了，为方言疑问结构",
+      "eval_confidence": 0.9
+    },
+    {
+      "word": "给有需耍",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言疑问句式\"给有\"+名词性成分\"需耍\"，表示\"有没有需要\"，为方言疑问结构",
+      "eval_confidence": 0.85
+    },
+    {
+      "word": "事情给有",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言疑问句式，表示有没有事情，“给有”为方言疑问标记",
+      "eval_confidence": 0.9
+    },
+    {
+      "word": "咋个一点",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言疑问句式\"咋个\"+\"一点\"，表示\"怎么一点\"，为方言疑问结构",
+      "eval_confidence": 0.9
+    },
+    {
+      "word": "给有结果",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言疑问句式，由'给有'（是否有）和'结果'组成，询问是否有结果，非电力服务专有表达",
+      "eval_confidence": 0.85
+    },
+    {
+      "word": "不来电呢",
+      "eval_has_dialect": true,
+      "eval_power_relevant": true,
+      "eval_category": "OUTAGE",
+      "eval_definition": "玉溪方言固定表达，表示没有来电、供电中断，带有方言语气词\"呢\"",
+      "eval_confidence": 0.95
+    },
+    {
+      "word": "现在给有",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言疑问表达，\"现在给有\"意为\"现在有没有\"，\"给有\"为方言疑问词",
+      "eval_confidence": 0.9
+    },
+    {
+      "word": "给有操作",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言疑问句式“给有”+“操作”，表示“有没有操作”，带有方言特征",
+      "eval_confidence": 0.9
+    },
+    {
+      "word": "给有看看",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言疑问句式\"给有\"+动词\"看看\"，表示\"有没有看看\"，为方言疑问结构",
+      "eval_confidence": 0.9
+    },
+    {
+      "word": "这边给有",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言疑问表达，表示“这边有没有”，带有方言疑问词“给有”",
+      "eval_confidence": 0.9
+    },
+    {
+      "word": "就咋个",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "包含玉溪方言词“咋个”，意为“怎么”，“就咋个”表示“就这么”",
+      "eval_confidence": 0.9
+    },
+    {
+      "word": "一下给有",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言疑问表达，意为“一下子有没有”，包含方言词“给有”",
+      "eval_confidence": 0.9
+    },
+    {
+      "word": "给有停电",
+      "eval_has_dialect": true,
+      "eval_power_relevant": true,
+      "eval_category": "OUTAGE",
+      "eval_definition": "玉溪方言疑问表达，询问是否发生停电，\"给有\"为方言\"是否有\"之意",
+      "eval_confidence": 0.95
+    },
+    {
+      "word": "给有",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言疑问词，表示\"是否有\"",
+      "eval_confidence": 0.9
+    },
+    {
+      "word": "咋个",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言疑问词，表示“怎么、为什么”",
+      "eval_confidence": 0.95
+    },
+    {
+      "word": "是呢",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言表达，相当于\"是的\"，带有方言语气词\"呢\"",
+      "eval_confidence": 0.9
+    },
+    {
+      "word": "老火",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言形容词，表示严重、厉害、糟糕，程度深",
+      "eval_confidence": 0.95
+    },
+    {
+      "word": "咋整",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言词汇，表示怎么办、怎么处理",
+      "eval_confidence": 0.9
+    },
+    {
+      "word": "鬼火",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言固定表达，表示愤怒、烦躁，'鬼火绿'表示非常生气",
+      "eval_confidence": 0.95
+    },
+    {
+      "word": "冇住",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言，表示没有居住，\"冇\"为方言否定词",
+      "eval_confidence": 0.9
+    },
+    {
+      "word": "车给有",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言疑问句式\"给有\"询问\"是否有\"，\"车给有\"意为\"有没有车\"",
+      "eval_confidence": 0.9
+    },
+    {
+      "word": "不鬼火",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言固定表达，表示不生气、算了、没事了",
+      "eval_confidence": 0.9
+    },
+    {
+      "word": "给有哪个",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言疑问句式，由疑问词“给有”加“哪个”构成，询问有没有谁/有没有人",
+      "eval_confidence": 0.92
+    },
+    {
+      "word": "着戳",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言被动表达，表示被戳到或被刺到",
+      "eval_confidence": 0.8
+    },
+    {
+      "word": "负荷咋个",
+      "eval_has_dialect": true,
+      "eval_power_relevant": true,
+      "eval_category": "OTHER",
+      "eval_definition": "玉溪方言疑问结构，询问电力负荷情况，“咋个”为方言疑问词“怎么”",
+      "eval_confidence": 0.85
+    },
+    {
+      "word": "给有什么",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言疑问句式\"给有\"+疑问词\"什么\"，表示\"有没有什么\"，为方言疑问结构",
+      "eval_confidence": 0.9
+    },
+    {
+      "word": "说咋个",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "方言疑问结构，表示“怎么说/说什么”，含有方言词汇“咋个”",
+      "eval_confidence": 0.9
+    },
+    {
+      "word": "你咋个",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言疑问句式，表示“你怎么”，带有方言疑问词“咋个”",
+      "eval_confidence": 0.95
+    },
+    {
+      "word": "明天给有",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言疑问表达，\"明天有没有...\"，包含方言词\"给有\"",
+      "eval_confidence": 0.9
+    },
+    {
+      "word": "挨我们",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言结构，“挨”为方言介词，表示把、被、和，此处“挨我们”意为“把我们/给我们”",
+      "eval_confidence": 0.9
+    },
+    {
+      "word": "是呢没",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "玉溪方言口语表达，意为“是不是呢”或“是吗”，带有方言语气词“呢”",
+      "eval_confidence": 0.8
+    },
+    {
+      "word": "好呢",
+      "eval_has_dialect": true,
+      "eval_power_relevant": false,
+      "eval_category": "NOT_POWER",
+      "eval_definition": "形容词\"好\"+语气词\"呢\"，表示\"好的/行\"，带有方言语气特征",
+      "eval_confidence": 0.85
+    },
+    {
+      "word": "小组给有",
+      "eval_has_dialect": true,
+      "eval_power_relevant": true,
+      "eval_category": "REPAIR",
+      "eval_definition": "玉溪方言表达，询问小组是否存在或到位，\"给有\"为方言疑问词表示\"有没有\"，可能用于电力服务中询问抢修小组",
+      "eval_confidence": 0.9
+    }
+  ]
+}

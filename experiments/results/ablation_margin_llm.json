@@ -1,0 +1,620 @@
+{
+  "experiment": "ablation_margin_llm",
+  "config": {
+    "name": "Margin + RAG-LLM Oracle",
+    "al_strategy": "margin",
+    "oracle_type": "rag_llm",
+    "use_npmi": false,
+    "description": "Ablation: isolates RAG-LLM Oracle (vs baseline rule oracle)"
+  },
+  "metrics": {
+    "predicted_size": 32,
+    "oracle_queries": 15,
+    "runtime_seconds": 46.79
+  },
+  "reference_overlap": {
+    "exact_matches": 0,
+    "exact_terms": [],
+    "token_overlap_matches": 0,
+    "token_overlap_terms": [],
+    "reference_size": 859
+  },
+  "round_history": [
+    {
+      "round": 1,
+      "pool_size": 39,
+      "selected": 5,
+      "verified": 4,
+      "rejected": 1,
+      "lexicon_size": 23,
+      "oracle_queries_total": 5,
+      "verified_words": [
+        "咋个上个月",
+        "真呢",
+        "车给有",
+        "等哈"
+      ],
+      "selected_detail": [
+        {
+          "word": "咋个上个月",
+          "similarity": 0.4686,
+          "wordhood": 0.8,
+          "combined_score": 0.6012,
+          "category": "REPAIR",
+          "tdcal_score": null,
+          "margin_dist": 0.0011999999999999789
+        },
+        {
+          "word": "真呢",
+          "similarity": 0.7819,
+          "wordhood": 0.35,
+          "combined_score": 0.6092,
+          "category": "REPAIR",
+          "tdcal_score": null,
+          "margin_dist": 0.009199999999999986
+        },
+        {
+          "word": "车给有",
+          "similarity": 0.5729,
+          "wordhood": 0.6667,
+          "combined_score": 0.6104,
+          "category": "REPAIR",
+          "tdcal_score": null,
+          "margin_dist": 0.010400000000000076
+        },
+        {
+          "word": "换着",
+          "similarity": 0.8256,
+          "wordhood": 0.35,
+          "combined_score": 0.6353,
+          "category": "REPAIR",
+          "tdcal_score": null,
+          "margin_dist": 0.0353
+        },
+        {
+          "word": "等哈",
+          "similarity": 0.8378,
+          "wordhood": 0.35,
+          "combined_score": 0.6427,
+          "category": "REPAIR",
+          "tdcal_score": null,
+          "margin_dist": 0.04270000000000007
+        }
+      ],
+      "judged_detail": [
+        {
+          "word": "咋个上个月",
+          "oracle_label": true,
+          "oracle_reason": "玉溪方言疑问词\"咋个\"与时间词\"上个月\"组合，表示\"为什么上个月\"，为方言疑问结构",
+          "oracle_category": "NOT_POWER",
+          "oracle_has_dialect": true,
+          "oracle_power_relevant": false,
+          "oracle_confidence": 0.9
+        },
+        {
+          "word": "真呢",
+          "oracle_label": true,
+          "oracle_reason": "玉溪方言表达，表示'真的'，语气词'呢'加强肯定语气",
+          "oracle_category": "NOT_POWER",
+          "oracle_has_dialect": true,
+          "oracle_power_relevant": false,
+          "oracle_confidence": 0.85
+        },
+        {
+          "word": "车给有",
+          "oracle_label": true,
+          "oracle_reason": "玉溪方言疑问句式\"车\"+\"给有\"，表示\"有没有车\"或\"车有没有\"",
+          "oracle_category": "NOT_POWER",
+          "oracle_has_dialect": true,
+          "oracle_power_relevant": false,
+          "oracle_confidence": 0.8
+        },
+        {
+          "word": "换着",
+          "oracle_label": false,
+          "oracle_reason": "标准汉语动词短语，表示更换某物并持续状态，没有方言特征",
+          "oracle_category": "NOT_POWER",
+          "oracle_has_dialect": false,
+          "oracle_power_relevant": false,
+          "oracle_confidence": 0.9
+        },
+        {
+          "word": "等哈",
+          "oracle_label": true,
+          "oracle_reason": "玉溪方言固定表达，表示\"等一下\"，带有方言语气词\"哈\"",
+          "oracle_category": "NOT_POWER",
+          "oracle_has_dialect": true,
+          "oracle_power_relevant": false,
+          "oracle_confidence": 0.95
+        }
+      ],
+      "cumulative_lexicon_size": 23,
+      "cumulative_ref_exact": 0,
+      "cumulative_ref_token": 0
+    },
+    {
+      "round": 2,
+      "pool_size": 34,
+      "selected": 5,
+      "verified": 4,
+      "rejected": 1,
+      "lexicon_size": 27,
+      "oracle_queries_total": 10,
+      "verified_words": [
+        "明天给有",
+        "好呢",
+        "早说嘛",
+        "着戳"
+      ],
+      "selected_detail": [
+        {
+          "word": "等着",
+          "similarity": 0.843,
+          "wordhood": 0.35,
+          "combined_score": 0.6458,
+          "category": "REPAIR",
+          "tdcal_score": null,
+          "margin_dist": 0.04580000000000006
+        },
+        {
+          "word": "明天给有",
+          "similarity": 0.6005,
+          "wordhood": 0.75,
+          "combined_score": 0.6603,
+          "category": "REPAIR",
+          "tdcal_score": null,
+          "margin_dist": 0.06030000000000002
+        },
+        {
+          "word": "好呢",
+          "similarity": 0.8723,
+          "wordhood": 0.35,
+          "combined_score": 0.6634,
+          "category": "REPAIR",
+          "tdcal_score": null,
+          "margin_dist": 0.06340000000000001
+        },
+        {
+          "word": "早说嘛",
+          "similarity": 0.7727,
+          "wordhood": 0.5167,
+          "combined_score": 0.6703,
+          "category": "REPAIR",
+          "tdcal_score": null,
+          "margin_dist": 0.07030000000000003
+        },
+        {
+          "word": "着戳",
+          "similarity": 0.8944,
+          "wordhood": 0.35,
+          "combined_score": 0.6766,
+          "category": "EQUIPMENT",
+          "tdcal_score": null,
+          "margin_dist": 0.0766
+        }
+      ],
+      "judged_detail": [
+        {
+          "word": "等着",
+          "oracle_label": false,
+          "oracle_reason": "标准汉语动词\"等\"加体标记\"着\"，表示等待的状态，没有玉溪方言特征",
+          "oracle_category": "NOT_POWER",
+          "oracle_has_dialect": false,
+          "oracle_power_relevant": false,
+          "oracle_confidence": 0.95
+        },
+        {
+          "word": "明天给有",
+          "oracle_label": true,
+          "oracle_reason": "玉溪方言疑问句式\"给有\"表示\"有没有\"，\"明天给有\"即\"明天有没有\"的疑问表达，带有方言特征。",
+          "oracle_category": "NOT_POWER",
+          "oracle_has_dialect": true,
+          "oracle_power_relevant": false,
+          "oracle_confidence": 0.9
+        },
+        {
+          "word": "好呢",
+          "oracle_label": true,
+          "oracle_reason": "形容词\"好\"+语气词\"呢\"，表示\"好的/行\"，带有方言语气特征",
+          "oracle_category": "NOT_POWER",
+          "oracle_has_dialect": true,
+          "oracle_power_relevant": false,
+          "oracle_confidence": 0.85
+        },
+        {
+          "word": "早说嘛",
+          "oracle_label": true,
+          "oracle_reason": "玉溪方言表达，'早说'+语气词'嘛'，表示委婉的埋怨或提醒，带有方言语气特征",
+          "oracle_category": "NOT_POWER",
+          "oracle_has_dialect": true,
+          "oracle_power_relevant": false,
+          "oracle_confidence": 0.9
+        },
+        {
+          "word": "着戳",
+          "oracle_label": true,
+          "oracle_reason": "玉溪方言固定表达，由被动标记\"着\"和动词\"戳\"组成，表示遭受挫折、倒霉或受伤，常用于表达不顺利情况",
+          "oracle_category": "NOT_POWER",
+          "oracle_has_dialect": true,
+          "oracle_power_relevant": false,
+          "oracle_confidence": 0.85
+        }
+      ],
+      "cumulative_lexicon_size": 27,
+      "cumulative_ref_exact": 0,
+      "cumulative_ref_token": 0
+    },
+    {
+      "round": 3,
+      "pool_size": 29,
+      "selected": 5,
+      "verified": 5,
+      "rejected": 0,
+      "lexicon_size": 32,
+      "oracle_queries_total": 15,
+      "verified_words": [
+        "着电",
+        "冇交",
+        "小区给有",
+        "是呢没",
+        "我家呢"
+      ],
+      "selected_detail": [
+        {
+          "word": "着电",
+          "similarity": 0.8955,
+          "wordhood": 0.35,
+          "combined_score": 0.6773,
+          "category": "OUTAGE",
+          "tdcal_score": null,
+          "margin_dist": 0.07730000000000004
+        },
+        {
+          "word": "冇交",
+          "similarity": 0.7979,
+          "wordhood": 0.5,
+          "combined_score": 0.6787,
+          "category": "FAULT",
+          "tdcal_score": null,
+          "margin_dist": 0.07869999999999999
+        },
+        {
+          "word": "小区给有",
+          "similarity": 0.6402,
+          "wordhood": 0.75,
+          "combined_score": 0.6841,
+          "category": "REPAIR",
+          "tdcal_score": null,
+          "margin_dist": 0.08410000000000006
+        },
+        {
+          "word": "是呢没",
+          "similarity": 0.6965,
+          "wordhood": 0.6667,
+          "combined_score": 0.6846,
+          "category": "REPAIR",
+          "tdcal_score": null,
+          "margin_dist": 0.08460000000000001
+        },
+        {
+          "word": "我家呢",
+          "similarity": 0.499,
+          "wordhood": 0.5167,
+          "combined_score": 0.5061,
+          "category": "REPAIR",
+          "tdcal_score": null,
+          "margin_dist": 0.09389999999999998
+        }
+      ],
+      "judged_detail": [
+        {
+          "word": "着电",
+          "oracle_label": true,
+          "oracle_reason": "表示触电或被电到，带有方言被动标记\"着\"",
+          "oracle_category": "FAULT",
+          "oracle_has_dialect": true,
+          "oracle_power_relevant": true,
+          "oracle_confidence": 0.9
+        },
+        {
+          "word": "冇交",
+          "oracle_label": true,
+          "oracle_reason": "玉溪方言表达，表示没有交电费",
+          "oracle_category": "BILLING",
+          "oracle_has_dialect": true,
+          "oracle_power_relevant": true,
+          "oracle_confidence": 0.95
+        },
+        {
+          "word": "小区给有",
+          "oracle_label": true,
+          "oracle_reason": "玉溪方言疑问句式，表示“小区有没有”，用于提问",
+          "oracle_category": "NOT_POWER",
+          "oracle_has_dialect": true,
+          "oracle_power_relevant": false,
+          "oracle_confidence": 0.9
+        },
+        {
+          "word": "是呢没",
+          "oracle_label": true,
+          "oracle_reason": "玉溪方言疑问句式，带有语气词\"呢\"和否定词\"没\"，表示\"是不是\"或\"是吗\"的疑问",
+          "oracle_category": "NOT_POWER",
+          "oracle_has_dialect": true,
+          "oracle_power_relevant": false,
+          "oracle_confidence": 0.8
+        },
+        {
+          "word": "我家呢",
+          "oracle_label": true,
+          "oracle_reason": "玉溪方言表达'我家的'，'呢'为方言语气词",
+          "oracle_category": "NOT_POWER",
+          "oracle_has_dialect": true,
+          "oracle_power_relevant": false,
+          "oracle_confidence": 0.9
+        }
+      ],
+      "cumulative_lexicon_size": 32,
+      "cumulative_ref_exact": 0,
+      "cumulative_ref_token": 0
+    }
+  ],
+  "lexicon_size": 32,
+  "lexicon_sample": [
+    {
+      "word": "整烂咋个",
+      "category": "FAULT",
+      "similarity": 0.856,
+      "wordhood": 0.75,
+      "combined_score": 0.8136,
+      "oracle_label": null
+    },
+    {
+      "word": "给有需耍",
+      "category": "REPAIR",
+      "similarity": 0.8179,
+      "wordhood": 0.75,
+      "combined_score": 0.7907,
+      "oracle_label": null
+    },
+    {
+      "word": "事情给有",
+      "category": "REPAIR",
+      "similarity": 0.8131,
+      "wordhood": 0.75,
+      "combined_score": 0.7878,
+      "oracle_label": null
+    },
+    {
+      "word": "咋个一点",
+      "category": "REPAIR",
+      "similarity": 0.8711,
+      "wordhood": 0.75,
+      "combined_score": 0.8226,
+      "oracle_label": null
+    },
+    {
+      "word": "给有结果",
+      "category": "REPAIR",
+      "similarity": 0.815,
+      "wordhood": 0.75,
+      "combined_score": 0.789,
+      "oracle_label": null
+    },
+    {
+      "word": "不来电呢",
+      "category": "OUTAGE",
+      "similarity": 0.9674,
+      "wordhood": 0.6,
+      "combined_score": 0.8204,
+      "oracle_label": null
+    },
+    {
+      "word": "现在给有",
+      "category": "REPAIR",
+      "similarity": 0.8574,
+      "wordhood": 0.75,
+      "combined_score": 0.8144,
+      "oracle_label": null
+    },
+    {
+      "word": "给有操作",
+      "category": "REPAIR",
+      "similarity": 0.8893,
+      "wordhood": 0.75,
+      "combined_score": 0.8336,
+      "oracle_label": null
+    },
+    {
+      "word": "给有看看",
+      "category": "REPAIR",
+      "similarity": 0.975,
+      "wordhood": 0.75,
+      "combined_score": 0.885,
+      "oracle_label": null
+    },
+    {
+      "word": "这边给有",
+      "category": "REPAIR",
+      "similarity": 0.8624,
+      "wordhood": 0.75,
+      "combined_score": 0.8174,
+      "oracle_label": null
+    },
+    {
+      "word": "就咋个",
+      "category": "REPAIR",
+      "similarity": 0.8806,
+      "wordhood": 0.6667,
+      "combined_score": 0.795,
+      "oracle_label": null
+    },
+    {
+      "word": "一下给有",
+      "category": "REPAIR",
+      "similarity": 0.8468,
+      "wordhood": 0.75,
+      "combined_score": 0.8081,
+      "oracle_label": null
+    },
+    {
+      "word": "给有停电",
+      "category": "OUTAGE",
+      "similarity": 0.9113,
+      "wordhood": 0.75,
+      "combined_score": 0.8468,
+      "oracle_label": null
+    },
+    {
+      "word": "给有",
+      "category": "REPAIR",
+      "similarity": 0.8726,
+      "wordhood": 1.0,
+      "combined_score": 0.9235,
+      "oracle_label": null
+    },
+    {
+      "word": "咋个",
+      "category": "REPAIR",
+      "similarity": 0.8671,
+      "wordhood": 1.0,
+      "combined_score": 0.9202,
+      "oracle_label": null
+    },
+    {
+      "word": "是呢",
+      "category": "REPAIR",
+      "similarity": 0.783,
+      "wordhood": 1.0,
+      "combined_score": 0.8698,
+      "oracle_label": null
+    },
+    {
+      "word": "老火",
+      "category": "FAULT",
+      "similarity": 0.8684,
+      "wordhood": 1.0,
+      "combined_score": 0.921,
+      "oracle_label": null
+    },
+    {
+      "word": "咋整",
+      "category": "REPAIR",
+      "similarity": 0.8437,
+      "wordhood": 1.0,
+      "combined_score": 0.9062,
+      "oracle_label": null
+    },
+    {
+      "word": "鬼火",
+      "category": "FAULT",
+      "similarity": 0.9407,
+      "wordhood": 1.0,
+      "combined_score": 0.9644,
+      "oracle_label": null
+    },
+    {
+      "word": "咋个上个月",
+      "category": "REPAIR",
+      "similarity": 0.4686,
+      "wordhood": 0.8,
+      "combined_score": 0.6012,
+      "oracle_label": true
+    },
+    {
+      "word": "真呢",
+      "category": "REPAIR",
+      "similarity": 0.7819,
+      "wordhood": 0.35,
+      "combined_score": 0.6092,
+      "oracle_label": true
+    },
+    {
+      "word": "车给有",
+      "category": "REPAIR",
+      "similarity": 0.5729,
+      "wordhood": 0.6667,
+      "combined_score": 0.6104,
+      "oracle_label": true
+    },
+    {
+      "word": "等哈",
+      "category": "REPAIR",
+      "similarity": 0.8378,
+      "wordhood": 0.35,
+      "combined_score": 0.6427,
+      "oracle_label": true
+    },
+    {
+      "word": "明天给有",
+      "category": "REPAIR",
+      "similarity": 0.6005,
+      "wordhood": 0.75,
+      "combined_score": 0.6603,
+      "oracle_label": true
+    },
+    {
+      "word": "好呢",
+      "category": "REPAIR",
+      "similarity": 0.8723,
+      "wordhood": 0.35,
+      "combined_score": 0.6634,
+      "oracle_label": true
+    },
+    {
+      "word": "早说嘛",
+      "category": "REPAIR",
+      "similarity": 0.7727,
+      "wordhood": 0.5167,
+      "combined_score": 0.6703,
+      "oracle_label": true
+    },
+    {
+      "word": "着戳",
+      "category": "EQUIPMENT",
+      "similarity": 0.8944,
+      "wordhood": 0.35,
+      "combined_score": 0.6766,
+      "oracle_label": true
+    },
+    {
+      "word": "着电",
+      "category": "OUTAGE",
+      "similarity": 0.8955,
+      "wordhood": 0.35,
+      "combined_score": 0.6773,
+      "oracle_label": true
+    },
+    {
+      "word": "冇交",
+      "category": "FAULT",
+      "similarity": 0.7979,
+      "wordhood": 0.5,
+      "combined_score": 0.6787,
+      "oracle_label": true
+    },
+    {
+      "word": "小区给有",
+      "category": "REPAIR",
+      "similarity": 0.6402,
+      "wordhood": 0.75,
+      "combined_score": 0.6841,
+      "oracle_label": true
+    },
+    {
+      "word": "是呢没",
+      "category": "REPAIR",
+      "similarity": 0.6965,
+      "wordhood": 0.6667,
+      "combined_score": 0.6846,
+      "oracle_label": true
+    },
+    {
+      "word": "我家呢",
+      "category": "REPAIR",
+      "similarity": 0.499,
+      "wordhood": 0.5167,
+      "combined_score": 0.5061,
+      "oracle_label": true
+    }
+  ]
+}

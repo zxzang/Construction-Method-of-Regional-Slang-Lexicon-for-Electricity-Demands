@@ -1,0 +1,28 @@
+{
+  "threshold": 0.6,
+  "n_compared": 46,
+  "kappa_dialect": 1.0,
+  "kappa_dialect_degenerate": true,
+  "kappa_dialect_ci95": [
+    null,
+    null
+  ],
+  "kappa_power": 0.8487,
+  "kappa_power_degenerate": false,
+  "kappa_power_ci95": [
+    0.6436,
+    1.0
+  ],
+  "matrix_dialect": {
+    "llm_true_human_true": 46,
+    "llm_false_human_true": 0,
+    "llm_true_human_false": 0,
+    "llm_false_human_false": 0
+  },
+  "matrix_power": {
+    "llm_true_human_true": 7,
+    "llm_false_human_true": 1,
+    "llm_true_human_false": 1,
+    "llm_false_human_false": 37
+  }
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "word": "不来电呢",
+    "category": "OUTAGE",
+    "similarity": 0.9674,
+    "wordhood": 0.6,
+    "combined_score": 0.8204,
+    "pmi": 7.3139,
+    "npmi": 0.4421,
+    "freq": 2
+  },
+  {
+    "word": "给有停电",
+    "category": "OUTAGE",
+    "similarity": 0.9113,
+    "wordhood": 0.75,
+    "combined_score": 0.8468,
+    "pmi": 2.2871,
+    "npmi": 0.1383,
+    "freq": 2
+  },
+  {
+    "word": "老火",
+    "category": "FAULT",
+    "similarity": 0.8684,
+    "wordhood": 1.0,
+    "combined_score": 0.921,
+    "pmi": 0.0,
+    "npmi": 0.0,
+    "freq": 5,
+    "source": "anchor"
+  },
+  {
+    "word": "鬼火",
+    "category": "FAULT",
+    "similarity": 0.9407,
+    "wordhood": 1.0,
+    "combined_score": 0.9644,
+    "pmi": 0.0,
+    "npmi": 0.0,
+    "freq": 3,
+    "source": "anchor"
+  },
+  {
+    "word": "着电",
+    "category": "OUTAGE",
+    "similarity": 0.8955,
+    "wordhood": 0.35,
+    "combined_score": 0.6773,
+    "pmi": 5.5138,
+    "npmi": 0.4014,
+    "freq": 14,
+    "oracle_label": true,
+    "oracle_reason": "full:着电"
+  },
+  {
+    "word": "线路老火",
+    "category": "FAULT",
+    "similarity": 0.7703,
+    "wordhood": 0.75,
+    "combined_score": 0.7622,
+    "pmi": 7.4929,
+    "npmi": 0.4529,
+    "freq": 2,
+    "oracle_label": true,
+    "oracle_reason": "full:老火"
+  },
+  {
+    "word": "停电哈",
+    "category": "OUTAGE",
+    "similarity": 0.9466,
+    "wordhood": 0.5167,
+    "combined_score": 0.7746,
+    "pmi": 2.6554,
+    "npmi": 0.1605,
+    "freq": 2,
+    "oracle_label": true,
+    "oracle_reason": "full:停电哈"
+  },
+  {
+    "word": "不鬼火",
+    "category": "FAULT",
+    "similarity": 0.8528,
+    "wordhood": 0.6667,
+    "combined_score": 0.7784,
+    "pmi": 7.1456,
+    "npmi": 0.4319,
+    "freq": 2,
+    "oracle_label": true,
+    "oracle_reason": "full:鬼火"
+  }
+]
