@@ -1,0 +1,768 @@
+2026-06-03 17:15:28 [INFO] RunAll: Random seed set to 42
+2026-06-03 17:15:28 [INFO] RunAll: PYTHONHASHSEED=42 (dict/set order locked)
+2026-06-03 17:15:30 [INFO] faiss.loader: Loading faiss with AVX2 support.
+2026-06-03 17:15:30 [INFO] faiss.loader: Successfully loaded faiss with AVX2 support.
+2026-06-03 17:15:30 [INFO] RunAll: Loading and preprocessing corpus...
+2026-06-03 17:15:30 [INFO] data_loader: Loading 2 data files...
+2026-06-03 17:15:30 [INFO] data_loader:   Loaded 10401 messages from /nfs1/zangzhaoxiang/slang_lexicon/微信群聊天数据1_脱敏.csv
+2026-06-03 17:15:30 [INFO] data_loader:   Loaded 3579 messages from /nfs1/zangzhaoxiang/slang_lexicon/微信群聊天数据2_脱敏.csv
+2026-06-03 17:15:30 [INFO] data_loader: Preprocessing complete: 11177 valid messages from 13980 raw messages
+2026-06-03 17:15:30 [INFO] RunAll: Corpus: 11177 clean messages
+2026-06-03 17:15:30 [INFO] RunAll: Loading reference vocabulary...
+2026-06-03 17:15:30 [INFO] data_loader: Extracted 859 dialect terms from vocabulary file
+2026-06-03 17:15:30 [INFO] RunAll: Reference vocabulary: 859 dialect terms (general Yuxi dialect dictionary — NOT ground truth)
+2026-06-03 17:15:30 [DEBUG] jieba: Building prefix dict from the default dictionary ...
+2026-06-03 17:15:30 [DEBUG] jieba: Loading model from cache /tmp/jieba_cache_1007/jieba.cache
+2026-06-03 17:15:31 [DEBUG] jieba: Loading model cost 0.677 seconds.
+2026-06-03 17:15:31 [DEBUG] jieba: Prefix dict has been built successfully.
+2026-06-03 17:15:31 [INFO] RunAll: jieba default dictionary snapshot: 349045 words (filter enabled for get_corpus_dialect_anchors)
+2026-06-03 17:15:31 [INFO] RunAll: Injected 839 reference words into jieba dictionary
+2026-06-03 17:15:32 [INFO] RunAll: Corpus vocabulary: 12167 unique words, 68/859 reference terms found in corpus
+2026-06-03 17:15:33 [INFO] data_loader: Extracted 1 dialect content anchors from reference vocabulary (appearing in corpus)
+2026-06-03 17:15:33 [INFO] RunAll: Extended anchors: 1 dialect content words from reference vocabulary
+2026-06-03 17:15:33 [INFO] RunAll: Initializing shared pipeline components...
+2026-06-03 17:15:33 [INFO] candidate_generator: Building frequency model from corpus...
+2026-06-03 17:15:34 [INFO] candidate_generator: Vocabulary: 12165 unigrams, 48395 bigrams, 190934 total tokens
+2026-06-03 17:15:34 [INFO] semantic_mapper: Loading SBERT model: paraphrase-multilingual-MiniLM-L12-v2
+2026-06-03 17:15:34 [INFO] sentence_transformers.SentenceTransformer: Load pretrained SentenceTransformer: paraphrase-multilingual-MiniLM-L12-v2
+2026-06-03 17:15:41 [INFO] sentence_transformers.SentenceTransformer: Use pytorch device_name: cpu
+2026-06-03 17:15:41 [INFO] semantic_mapper: FAISS index: 65 seeds, dim=384
+2026-06-03 17:15:41 [INFO] RunAll: Shared components ready (frequency model + SBERT loaded once).
+2026-06-03 17:15:41 [INFO] RunAll: 
+============================================================
+2026-06-03 17:15:41 [INFO] RunAll: EXPERIMENT: Margin + Rule (Soft-Label baseline)
+2026-06-03 17:15:41 [INFO] RunAll: Strategy: margin, Oracle: rule, NPMI: False
+2026-06-03 17:15:41 [INFO] RunAll: ============================================================
+2026-06-03 17:15:41 [INFO] RunAll: [Phase 1] Generating candidates...
+2026-06-03 17:15:41 [INFO] RunAll:   (reusing shared frequency model)
+2026-06-03 17:15:41 [INFO] candidate_generator: Extracting candidates (use_npmi=False)...
+2026-06-03 17:15:41 [INFO] candidate_generator: Extracted 349 candidates (2 unigrams)
+2026-06-03 17:15:41 [INFO] RunAll:   -> 349 candidates extracted
+2026-06-03 17:15:41 [INFO] RunAll: [Phase 1.5] Fragment filter: removed 291 grammatical fragments (58 remaining)
+2026-06-03 17:15:41 [INFO] RunAll: [Phase 2] Semantic mapping with SBERT + FAISS (combined = α*sim + β*wordhood)...
+2026-06-03 17:15:41 [INFO] RunAll:   (reusing shared SBERT model)
+2026-06-03 17:15:42 [INFO] semantic_mapper: Classified: 19 accept, 39 uncertain, 0 reject (using combined = 0.6*sim + 0.4*wordhood)
+2026-06-03 17:15:42 [INFO] RunAll: [Phase 3] Setting up oracle...
+2026-06-03 17:15:42 [INFO] RunAll: [Phase 3.5] 19 auto-accepted candidates → keeping all (oracle labeling skipped; use --diagnose-phase35 to enable)
+2026-06-03 17:15:42 [INFO] RunAll: [Phase 4] Running active learning loop...
+2026-06-03 17:15:42 [INFO] active_learning: Round 1: selected=5, verified=2, lexicon=21, pool_remaining=34
+2026-06-03 17:15:42 [INFO] active_learning: Round 2: selected=5, verified=1, lexicon=22, pool_remaining=29
+2026-06-03 17:15:42 [INFO] active_learning: Round 3: selected=5, verified=3, lexicon=25, pool_remaining=24
+2026-06-03 17:15:42 [INFO] RunAll: [Phase 5] Computing reference vocabulary overlap...
+2026-06-03 17:15:42 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 25 pred)
+2026-06-03 17:15:42 [INFO] RunAll:   Reference overlap: 0 exact, 0 token-overlap
+2026-06-03 17:15:42 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 21 pred)
+2026-06-03 17:15:42 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 22 pred)
+2026-06-03 17:15:42 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 25 pred)
+2026-06-03 17:15:42 [INFO] RunAll:   Lexicon:     25 terms
+2026-06-03 17:15:42 [INFO] RunAll:   Queries:     15
+2026-06-03 17:15:42 [INFO] RunAll:   Ref overlap: 0 exact / 0 token
+2026-06-03 17:15:42 [INFO] RunAll:   Time:        0.13s
+2026-06-03 17:15:42 [INFO] evaluation: Summary saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/baseline_margin_rule.json
+2026-06-03 17:15:42 [INFO] evaluation: Full lexicon (25 terms) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/baseline_margin_rule_lexicon.json
+2026-06-03 17:15:42 [INFO] evaluation: Candidate pool (58 total) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/baseline_margin_rule_candidates.json
+2026-06-03 17:15:42 [INFO] RunAll: 
+============================================================
+2026-06-03 17:15:42 [INFO] RunAll: EXPERIMENT: Margin + RAG-LLM Oracle
+2026-06-03 17:15:42 [INFO] RunAll: Strategy: margin, Oracle: rag_llm, NPMI: False
+2026-06-03 17:15:42 [INFO] RunAll: ============================================================
+2026-06-03 17:15:42 [INFO] RunAll: [Phase 1] Generating candidates...
+2026-06-03 17:15:42 [INFO] RunAll:   (reusing shared frequency model)
+2026-06-03 17:15:42 [INFO] candidate_generator: Extracting candidates (use_npmi=False)...
+2026-06-03 17:15:42 [INFO] candidate_generator: Extracted 349 candidates (2 unigrams)
+2026-06-03 17:15:42 [INFO] RunAll:   -> 349 candidates extracted
+2026-06-03 17:15:42 [INFO] RunAll: [Phase 1.5] Fragment filter: removed 291 grammatical fragments (58 remaining)
+2026-06-03 17:15:42 [INFO] RunAll: [Phase 2] Semantic mapping with SBERT + FAISS (combined = α*sim + β*wordhood)...
+2026-06-03 17:15:42 [INFO] RunAll:   (reusing shared SBERT model)
+2026-06-03 17:15:42 [INFO] semantic_mapper: Classified: 19 accept, 39 uncertain, 0 reject (using combined = 0.6*sim + 0.4*wordhood)
+2026-06-03 17:15:42 [INFO] RunAll: [Phase 3] Setting up oracle...
+2026-06-03 17:15:42 [INFO] oracle: KB file is in old format (no content hash) — migrating to hash-tracked format.
+2026-06-03 17:15:42 [INFO] oracle: KB loaded: 30 entries (hash=46205f73...)
+2026-06-03 17:15:42 [INFO] RunAll: [Phase 3.5] 19 auto-accepted candidates → keeping all (oracle labeling skipped; use --diagnose-phase35 to enable)
+2026-06-03 17:15:42 [INFO] RunAll: [Phase 4] Running active learning loop...
+2026-06-03 17:15:43 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:15:45 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:15:47 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:15:49 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:15:52 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:15:54 [INFO] active_learning: Round 1: selected=5, verified=4, lexicon=23, pool_remaining=34
+2026-06-03 17:15:54 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:15:57 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:16:01 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:16:04 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:16:06 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:16:09 [INFO] active_learning: Round 2: selected=5, verified=4, lexicon=27, pool_remaining=29
+2026-06-03 17:16:09 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:16:11 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:16:13 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:16:16 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:16:19 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:16:22 [INFO] active_learning: Round 3: selected=5, verified=5, lexicon=32, pool_remaining=24
+2026-06-03 17:16:22 [INFO] RunAll: [Phase 5] Computing reference vocabulary overlap...
+2026-06-03 17:16:22 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 32 pred)
+2026-06-03 17:16:22 [INFO] RunAll:   Reference overlap: 0 exact, 0 token-overlap
+2026-06-03 17:16:22 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 23 pred)
+2026-06-03 17:16:22 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 27 pred)
+2026-06-03 17:16:22 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 32 pred)
+2026-06-03 17:16:22 [INFO] RunAll:   Lexicon:     32 terms
+2026-06-03 17:16:22 [INFO] RunAll:   Queries:     15
+2026-06-03 17:16:22 [INFO] RunAll:   Ref overlap: 0 exact / 0 token
+2026-06-03 17:16:22 [INFO] RunAll:   Time:        39.91s
+2026-06-03 17:16:22 [INFO] evaluation: Summary saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/ablation_margin_llm.json
+2026-06-03 17:16:22 [INFO] evaluation: Full lexicon (32 terms) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/ablation_margin_llm_lexicon.json
+2026-06-03 17:16:22 [INFO] evaluation: Candidate pool (58 total) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/ablation_margin_llm_candidates.json
+2026-06-03 17:16:22 [INFO] RunAll: 
+============================================================
+2026-06-03 17:16:22 [INFO] RunAll: EXPERIMENT: TD-CAL + Rule Oracle
+2026-06-03 17:16:22 [INFO] RunAll: Strategy: tdcal, Oracle: rule, NPMI: False
+2026-06-03 17:16:22 [INFO] RunAll: ============================================================
+2026-06-03 17:16:22 [INFO] RunAll: [Phase 1] Generating candidates...
+2026-06-03 17:16:22 [INFO] RunAll:   (reusing shared frequency model)
+2026-06-03 17:16:22 [INFO] candidate_generator: Extracting candidates (use_npmi=False)...
+2026-06-03 17:16:22 [INFO] candidate_generator: Extracted 349 candidates (2 unigrams)
+2026-06-03 17:16:22 [INFO] RunAll:   -> 349 candidates extracted
+2026-06-03 17:16:22 [INFO] RunAll: [Phase 1.5] Fragment filter: removed 291 grammatical fragments (58 remaining)
+2026-06-03 17:16:22 [INFO] RunAll: [Phase 2] Semantic mapping with SBERT + FAISS (combined = α*sim + β*wordhood)...
+2026-06-03 17:16:22 [INFO] RunAll:   (reusing shared SBERT model)
+2026-06-03 17:16:22 [INFO] semantic_mapper: Classified: 19 accept, 39 uncertain, 0 reject (using combined = 0.6*sim + 0.4*wordhood)
+2026-06-03 17:16:22 [INFO] RunAll: [Phase 3] Setting up oracle...
+2026-06-03 17:16:22 [INFO] RunAll: [Phase 3.5] 19 auto-accepted candidates → keeping all (oracle labeling skipped; use --diagnose-phase35 to enable)
+2026-06-03 17:16:22 [INFO] RunAll: [Phase 4] Running active learning loop...
+2026-06-03 17:16:22 [INFO] active_learning: Round 1: selected=5, verified=2, lexicon=21, pool_remaining=34
+2026-06-03 17:16:22 [INFO] active_learning: Round 2: selected=5, verified=4, lexicon=25, pool_remaining=29
+2026-06-03 17:16:22 [INFO] active_learning: Round 3: selected=5, verified=2, lexicon=27, pool_remaining=24
+2026-06-03 17:16:22 [INFO] RunAll: [Phase 5] Computing reference vocabulary overlap...
+2026-06-03 17:16:22 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 27 pred)
+2026-06-03 17:16:22 [INFO] RunAll:   Reference overlap: 0 exact, 0 token-overlap
+2026-06-03 17:16:22 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 21 pred)
+2026-06-03 17:16:22 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 25 pred)
+2026-06-03 17:16:22 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 27 pred)
+2026-06-03 17:16:22 [INFO] RunAll:   Lexicon:     27 terms
+2026-06-03 17:16:22 [INFO] RunAll:   Queries:     15
+2026-06-03 17:16:22 [INFO] RunAll:   Ref overlap: 0 exact / 0 token
+2026-06-03 17:16:22 [INFO] RunAll:   Time:        0.16s
+2026-06-03 17:16:22 [INFO] evaluation: Summary saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/ablation_tdcal_rule.json
+2026-06-03 17:16:22 [INFO] evaluation: Full lexicon (27 terms) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/ablation_tdcal_rule_lexicon.json
+2026-06-03 17:16:22 [INFO] evaluation: Candidate pool (58 total) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/ablation_tdcal_rule_candidates.json
+2026-06-03 17:16:22 [INFO] RunAll: 
+============================================================
+2026-06-03 17:16:22 [INFO] RunAll: EXPERIMENT: Random + RAG-LLM Oracle
+2026-06-03 17:16:22 [INFO] RunAll: Strategy: random, Oracle: rag_llm, NPMI: False
+2026-06-03 17:16:22 [INFO] RunAll: ============================================================
+2026-06-03 17:16:22 [INFO] RunAll: [Phase 1] Generating candidates...
+2026-06-03 17:16:22 [INFO] RunAll:   (reusing shared frequency model)
+2026-06-03 17:16:22 [INFO] candidate_generator: Extracting candidates (use_npmi=False)...
+2026-06-03 17:16:22 [INFO] candidate_generator: Extracted 349 candidates (2 unigrams)
+2026-06-03 17:16:22 [INFO] RunAll:   -> 349 candidates extracted
+2026-06-03 17:16:22 [INFO] RunAll: [Phase 1.5] Fragment filter: removed 291 grammatical fragments (58 remaining)
+2026-06-03 17:16:22 [INFO] RunAll: [Phase 2] Semantic mapping with SBERT + FAISS (combined = α*sim + β*wordhood)...
+2026-06-03 17:16:22 [INFO] RunAll:   (reusing shared SBERT model)
+2026-06-03 17:16:22 [INFO] semantic_mapper: Classified: 19 accept, 39 uncertain, 0 reject (using combined = 0.6*sim + 0.4*wordhood)
+2026-06-03 17:16:22 [INFO] RunAll: [Phase 3] Setting up oracle...
+2026-06-03 17:16:22 [INFO] oracle: KB loaded: 30 entries (hash=46205f73...)
+2026-06-03 17:16:22 [INFO] RunAll: [Phase 3.5] 19 auto-accepted candidates → keeping all (oracle labeling skipped; use --diagnose-phase35 to enable)
+2026-06-03 17:16:22 [INFO] RunAll: [Phase 4] Running active learning loop...
+2026-06-03 17:16:22 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:16:25 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:16:28 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:16:30 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:16:33 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:16:35 [INFO] active_learning: Round 1: selected=5, verified=4, lexicon=23, pool_remaining=34
+2026-06-03 17:16:36 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:16:39 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:16:41 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:16:43 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:16:46 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:16:49 [INFO] active_learning: Round 2: selected=5, verified=5, lexicon=28, pool_remaining=29
+2026-06-03 17:16:49 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:16:52 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:16:54 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:16:57 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:16:59 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:17:02 [INFO] active_learning: Round 3: selected=5, verified=5, lexicon=33, pool_remaining=24
+2026-06-03 17:17:02 [INFO] RunAll: [Phase 5] Computing reference vocabulary overlap...
+2026-06-03 17:17:02 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 33 pred)
+2026-06-03 17:17:02 [INFO] RunAll:   Reference overlap: 0 exact, 0 token-overlap
+2026-06-03 17:17:02 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 23 pred)
+2026-06-03 17:17:02 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 28 pred)
+2026-06-03 17:17:02 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 33 pred)
+2026-06-03 17:17:02 [INFO] RunAll:   Lexicon:     33 terms
+2026-06-03 17:17:02 [INFO] RunAll:   Queries:     15
+2026-06-03 17:17:02 [INFO] RunAll:   Ref overlap: 0 exact / 0 token
+2026-06-03 17:17:02 [INFO] RunAll:   Time:        39.88s
+2026-06-03 17:17:02 [INFO] evaluation: Summary saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/random_llm.json
+2026-06-03 17:17:02 [INFO] evaluation: Full lexicon (33 terms) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/random_llm_lexicon.json
+2026-06-03 17:17:02 [INFO] evaluation: Candidate pool (58 total) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/random_llm_candidates.json
+2026-06-03 17:17:02 [INFO] RunAll: 
+============================================================
+2026-06-03 17:17:02 [INFO] RunAll: EXPERIMENT: TD-CAL + RAG-LLM Oracle (Proposed)
+2026-06-03 17:17:02 [INFO] RunAll: Strategy: tdcal, Oracle: rag_llm, NPMI: False
+2026-06-03 17:17:02 [INFO] RunAll: ============================================================
+2026-06-03 17:17:02 [INFO] RunAll: [Phase 1] Generating candidates...
+2026-06-03 17:17:02 [INFO] RunAll:   (reusing shared frequency model)
+2026-06-03 17:17:02 [INFO] candidate_generator: Extracting candidates (use_npmi=False)...
+2026-06-03 17:17:02 [INFO] candidate_generator: Extracted 349 candidates (2 unigrams)
+2026-06-03 17:17:02 [INFO] RunAll:   -> 349 candidates extracted
+2026-06-03 17:17:02 [INFO] RunAll: [Phase 1.5] Fragment filter: removed 291 grammatical fragments (58 remaining)
+2026-06-03 17:17:02 [INFO] RunAll: [Phase 2] Semantic mapping with SBERT + FAISS (combined = α*sim + β*wordhood)...
+2026-06-03 17:17:02 [INFO] RunAll:   (reusing shared SBERT model)
+2026-06-03 17:17:02 [INFO] semantic_mapper: Classified: 19 accept, 39 uncertain, 0 reject (using combined = 0.6*sim + 0.4*wordhood)
+2026-06-03 17:17:02 [INFO] RunAll: [Phase 3] Setting up oracle...
+2026-06-03 17:17:02 [INFO] oracle: KB loaded: 30 entries (hash=46205f73...)
+2026-06-03 17:17:02 [INFO] RunAll: [Phase 3.5] 19 auto-accepted candidates → keeping all (oracle labeling skipped; use --diagnose-phase35 to enable)
+2026-06-03 17:17:02 [INFO] RunAll: [Phase 4] Running active learning loop...
+2026-06-03 17:17:02 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:17:05 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:17:07 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:17:09 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:17:13 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:17:16 [INFO] active_learning: Round 1: selected=5, verified=4, lexicon=23, pool_remaining=34
+2026-06-03 17:17:16 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:17:18 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:17:20 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:17:23 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:17:27 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:17:30 [INFO] active_learning: Round 2: selected=5, verified=5, lexicon=28, pool_remaining=29
+2026-06-03 17:17:40 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:17:42 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:17:45 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:17:48 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:17:51 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:17:53 [INFO] active_learning: Round 3: selected=5, verified=4, lexicon=32, pool_remaining=24
+2026-06-03 17:17:53 [INFO] RunAll: [Phase 5] Computing reference vocabulary overlap...
+2026-06-03 17:17:53 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 32 pred)
+2026-06-03 17:17:53 [INFO] RunAll:   Reference overlap: 0 exact, 0 token-overlap
+2026-06-03 17:17:53 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 23 pred)
+2026-06-03 17:17:53 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 28 pred)
+2026-06-03 17:17:53 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 32 pred)
+2026-06-03 17:17:53 [INFO] RunAll:   Lexicon:     32 terms
+2026-06-03 17:17:53 [INFO] RunAll:   Queries:     15
+2026-06-03 17:17:53 [INFO] RunAll:   Ref overlap: 0 exact / 0 token
+2026-06-03 17:17:53 [INFO] RunAll:   Time:        51.59s
+2026-06-03 17:17:53 [INFO] evaluation: Summary saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/proposed_tdcal_llm.json
+2026-06-03 17:17:53 [INFO] evaluation: Full lexicon (32 terms) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/proposed_tdcal_llm_lexicon.json
+2026-06-03 17:17:53 [INFO] evaluation: Candidate pool (58 total) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/proposed_tdcal_llm_candidates.json
+2026-06-03 17:17:53 [INFO] RunAll: 
+============================================================
+2026-06-03 17:17:53 [INFO] RunAll: EXPERIMENT: Margin + Rule (Hard Gate)
+2026-06-03 17:17:53 [INFO] RunAll: Strategy: margin, Oracle: rule, NPMI: False
+2026-06-03 17:17:53 [INFO] RunAll: ============================================================
+2026-06-03 17:17:53 [INFO] RunAll: [Phase 1] Generating candidates...
+2026-06-03 17:17:53 [INFO] RunAll:   (reusing shared frequency model)
+2026-06-03 17:17:53 [INFO] candidate_generator: Extracting candidates (use_npmi=False)...
+2026-06-03 17:17:53 [INFO] candidate_generator: Extracted 41 candidates (0 unigrams)
+2026-06-03 17:17:53 [INFO] RunAll:   -> 41 candidates extracted
+2026-06-03 17:17:53 [INFO] RunAll: [Phase 1.5] Fragment filter: removed 32 grammatical fragments (9 remaining)
+2026-06-03 17:17:53 [INFO] RunAll: [Phase 2] Semantic mapping with SBERT + FAISS (combined = α*sim + β*wordhood)...
+2026-06-03 17:17:53 [INFO] RunAll:   (reusing shared SBERT model)
+2026-06-03 17:17:53 [INFO] semantic_mapper: Classified: 4 accept, 5 uncertain, 0 reject (using combined = 0.6*sim + 0.4*wordhood)
+2026-06-03 17:17:53 [INFO] RunAll: [Phase 3] Setting up oracle...
+2026-06-03 17:17:53 [INFO] RunAll: [Phase 3.5] 4 auto-accepted candidates → keeping all (oracle labeling skipped; use --diagnose-phase35 to enable)
+2026-06-03 17:17:53 [INFO] RunAll: [Phase 4] Running active learning loop...
+2026-06-03 17:17:53 [INFO] active_learning: Round 1: selected=5, verified=4, lexicon=8, pool_remaining=0
+2026-06-03 17:17:53 [INFO] active_learning: Round 2: pool empty, stopping
+2026-06-03 17:17:53 [INFO] RunAll: [Phase 5] Computing reference vocabulary overlap...
+2026-06-03 17:17:53 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 8 pred)
+2026-06-03 17:17:53 [INFO] RunAll:   Reference overlap: 0 exact, 0 token-overlap
+2026-06-03 17:17:53 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 8 pred)
+2026-06-03 17:17:53 [INFO] RunAll:   Lexicon:     8 terms
+2026-06-03 17:17:53 [INFO] RunAll:   Queries:     5
+2026-06-03 17:17:53 [INFO] RunAll:   Ref overlap: 0 exact / 0 token
+2026-06-03 17:17:53 [INFO] RunAll:   Time:        0.11s
+2026-06-03 17:17:53 [INFO] evaluation: Summary saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/ablation_hard_gate_rule.json
+2026-06-03 17:17:53 [INFO] evaluation: Full lexicon (8 terms) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/ablation_hard_gate_rule_lexicon.json
+2026-06-03 17:17:53 [INFO] evaluation: Candidate pool (9 total) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/ablation_hard_gate_rule_candidates.json
+2026-06-03 17:17:53 [INFO] RunAll: 
+============================================================
+2026-06-03 17:17:53 [INFO] RunAll: PRE-CALIBRATION COMPARISON
+2026-06-03 17:17:53 [INFO] RunAll: ============================================================
+2026-06-03 17:17:53 [INFO] RunAll: 
+============================================================
+2026-06-03 17:17:53 [INFO] RunAll: PHASE 6: POST-HOC LLM EVALUATION
+2026-06-03 17:17:53 [INFO] RunAll: ============================================================
+2026-06-03 17:17:53 [INFO] RunAll:   Loaded 25 terms from baseline_margin_rule_lexicon.json
+2026-06-03 17:17:53 [INFO] RunAll:   Loaded 32 terms from ablation_margin_llm_lexicon.json
+2026-06-03 17:17:53 [INFO] RunAll:   Loaded 27 terms from ablation_tdcal_rule_lexicon.json
+2026-06-03 17:17:53 [INFO] RunAll:   Loaded 33 terms from random_llm_lexicon.json
+2026-06-03 17:17:53 [INFO] RunAll:   Loaded 32 terms from proposed_tdcal_llm_lexicon.json
+2026-06-03 17:17:53 [INFO] RunAll:   Loaded 8 terms from ablation_hard_gate_rule_lexicon.json
+2026-06-03 17:17:53 [INFO] RunAll: [Phase 6a] Building calibration set from merged lexicons...
+2026-06-03 17:17:53 [INFO] RunAll:   Merged pool: 46 unique terms (from 157 total)
+2026-06-03 17:17:53 [INFO] evaluation: Human annotation sample: 13 boundary + 33 random = 46 total
+2026-06-03 17:17:53 [INFO] RunAll:   Calibration set: 46 terms for human annotation
+2026-06-03 17:17:53 [INFO] RunAll: [Phase 6b] Generating human annotation template...
+2026-06-03 17:17:53 [INFO] evaluation: Human annotation template saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/calibration_template.csv (46 terms)
+2026-06-03 17:17:53 [INFO] RunAll: [Phase 6c] Initializing LLM evaluator (deepseek-v4-pro)...
+2026-06-03 17:17:53 [INFO] RunAll: [Phase 6c] Evaluating ALL unique terms ONCE (merged pool = calibration set + all lexicons deduplicated)...
+2026-06-03 17:17:53 [INFO] RunAll:   Total unique terms to evaluate: 46
+2026-06-03 17:17:53 [INFO] RunAll:   (Of which 46 are in the calibration set)
+2026-06-03 17:17:54 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:18:03 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:18:12 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:18:17 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:18:25 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:18:36 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:18:40 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:18:52 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:18:58 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:19:09 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:19:17 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:19:27 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:19:41 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:19:55 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:20:02 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:20:08 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:20:12 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:20:25 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:20:30 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:20:35 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:20:43 [INFO] RunAll:   ... 20/46 terms evaluated
+2026-06-03 17:20:43 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:20:54 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:21:07 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:21:11 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:21:15 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:21:29 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:21:34 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:21:41 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:21:47 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:21:55 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:22:01 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:22:07 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:22:14 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:22:18 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:22:30 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:22:39 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:22:58 [ERROR] RunAll: Post-hoc evaluation FAILED: Empty LLM response
+Traceback (most recent call last):
+  File "/nfs1/zangzhaoxiang/slang_lexicon/experiments/run_all.py", line 767, in main
+    run_posthoc_evaluation(result_files)
+  File "/nfs1/zangzhaoxiang/slang_lexicon/experiments/run_all.py", line 305, in run_posthoc_evaluation
+    r = eval_oracle._evaluate_one(c)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs1/zangzhaoxiang/slang_lexicon/experiments/oracle.py", line 624, in _evaluate_one
+    result = self._call_llm(prompt)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs1/zangzhaoxiang/slang_lexicon/experiments/oracle.py", line 714, in _call_llm
+    return _extract_json_robust(text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs1/zangzhaoxiang/slang_lexicon/experiments/oracle.py", line 51, in _extract_json_robust
+    raise ValueError("Empty LLM response")
+ValueError: Empty LLM response
+2026-06-03 17:22:58 [INFO] RunAll: 
+Human annotation calibration not run.
+2026-06-03 17:22:58 [INFO] RunAll: To calibrate: annotate 'calibration_template.csv', save as
+2026-06-03 17:22:58 [INFO] RunAll:   'calibration_annotated.csv', then run:
+2026-06-03 17:22:58 [INFO] RunAll:   python run_all.py --annotations results/calibration_annotated.csv
+2026-06-03 17:22:58 [INFO] RunAll: 
+Experiments finished (6 succeeded, Phase 6 FAILED).
+2026-06-03 17:56:38 [INFO] RunAll: Random seed set to 42
+2026-06-03 17:56:38 [INFO] RunAll: PYTHONHASHSEED=42 (dict/set order locked)
+2026-06-03 17:56:40 [INFO] faiss.loader: Loading faiss with AVX2 support.
+2026-06-03 17:56:40 [INFO] faiss.loader: Successfully loaded faiss with AVX2 support.
+2026-06-03 17:56:40 [INFO] RunAll: Loading and preprocessing corpus...
+2026-06-03 17:56:40 [INFO] data_loader: Loading 2 data files...
+2026-06-03 17:56:40 [INFO] data_loader:   Loaded 10401 messages from /nfs1/zangzhaoxiang/slang_lexicon/微信群聊天数据1_脱敏.csv
+2026-06-03 17:56:40 [INFO] data_loader:   Loaded 3579 messages from /nfs1/zangzhaoxiang/slang_lexicon/微信群聊天数据2_脱敏.csv
+2026-06-03 17:56:40 [INFO] data_loader: Preprocessing complete: 11177 valid messages from 13980 raw messages
+2026-06-03 17:56:40 [INFO] RunAll: Corpus: 11177 clean messages
+2026-06-03 17:56:40 [INFO] RunAll: Loading reference vocabulary...
+2026-06-03 17:56:40 [INFO] data_loader: Extracted 859 dialect terms from vocabulary file
+2026-06-03 17:56:40 [INFO] RunAll: Reference vocabulary: 859 dialect terms (general Yuxi dialect dictionary — NOT ground truth)
+2026-06-03 17:56:40 [DEBUG] jieba: Building prefix dict from the default dictionary ...
+2026-06-03 17:56:40 [DEBUG] jieba: Loading model from cache /tmp/jieba_cache_1007/jieba.cache
+2026-06-03 17:56:41 [DEBUG] jieba: Loading model cost 0.693 seconds.
+2026-06-03 17:56:41 [DEBUG] jieba: Prefix dict has been built successfully.
+2026-06-03 17:56:41 [INFO] RunAll: jieba default dictionary snapshot: 349045 words (filter enabled for get_corpus_dialect_anchors)
+2026-06-03 17:56:41 [INFO] RunAll: Injected 839 reference words into jieba dictionary
+2026-06-03 17:56:42 [INFO] RunAll: Corpus vocabulary: 12167 unique words, 68/859 reference terms found in corpus
+2026-06-03 17:56:43 [INFO] data_loader: Extracted 1 dialect content anchors from reference vocabulary (appearing in corpus)
+2026-06-03 17:56:43 [INFO] RunAll: Extended anchors: 1 dialect content words from reference vocabulary
+2026-06-03 17:56:43 [INFO] RunAll: Initializing shared pipeline components...
+2026-06-03 17:56:43 [INFO] candidate_generator: Building frequency model from corpus...
+2026-06-03 17:56:45 [INFO] candidate_generator: Vocabulary: 12165 unigrams, 48395 bigrams, 190934 total tokens
+2026-06-03 17:56:45 [INFO] semantic_mapper: Loading SBERT model: paraphrase-multilingual-MiniLM-L12-v2
+2026-06-03 17:56:45 [INFO] sentence_transformers.SentenceTransformer: Load pretrained SentenceTransformer: paraphrase-multilingual-MiniLM-L12-v2
+2026-06-03 17:56:55 [INFO] sentence_transformers.SentenceTransformer: Use pytorch device_name: cpu
+2026-06-03 17:56:55 [INFO] semantic_mapper: FAISS index: 65 seeds, dim=384
+2026-06-03 17:56:55 [INFO] RunAll: Shared components ready (frequency model + SBERT loaded once).
+2026-06-03 17:56:55 [INFO] RunAll: 
+============================================================
+2026-06-03 17:56:55 [INFO] RunAll: EXPERIMENT: Margin + Rule (Soft-Label baseline)
+2026-06-03 17:56:55 [INFO] RunAll: Strategy: margin, Oracle: rule, NPMI: False
+2026-06-03 17:56:55 [INFO] RunAll: ============================================================
+2026-06-03 17:56:55 [INFO] RunAll: [Phase 1] Generating candidates...
+2026-06-03 17:56:55 [INFO] RunAll:   (reusing shared frequency model)
+2026-06-03 17:56:55 [INFO] candidate_generator: Extracting candidates (use_npmi=False)...
+2026-06-03 17:56:55 [INFO] candidate_generator: Extracted 349 candidates (2 unigrams)
+2026-06-03 17:56:55 [INFO] RunAll:   -> 349 candidates extracted
+2026-06-03 17:56:55 [INFO] RunAll: [Phase 1.5] Fragment filter: removed 291 grammatical fragments (58 remaining)
+2026-06-03 17:56:55 [INFO] RunAll: [Phase 2] Semantic mapping with SBERT + FAISS (combined = α*sim + β*wordhood)...
+2026-06-03 17:56:55 [INFO] RunAll:   (reusing shared SBERT model)
+2026-06-03 17:56:55 [INFO] semantic_mapper: Classified: 19 accept, 39 uncertain, 0 reject (using combined = 0.6*sim + 0.4*wordhood)
+2026-06-03 17:56:55 [INFO] RunAll: [Phase 3] Setting up oracle...
+2026-06-03 17:56:55 [INFO] RunAll: [Phase 3.5] 19 auto-accepted candidates → keeping all (oracle labeling skipped; use --diagnose-phase35 to enable)
+2026-06-03 17:56:55 [INFO] RunAll: [Phase 4] Running active learning loop...
+2026-06-03 17:56:55 [INFO] active_learning: Round 1: selected=5, verified=2, lexicon=21, pool_remaining=34
+2026-06-03 17:56:55 [INFO] active_learning: Round 2: selected=5, verified=1, lexicon=22, pool_remaining=29
+2026-06-03 17:56:55 [INFO] active_learning: Round 3: selected=5, verified=3, lexicon=25, pool_remaining=24
+2026-06-03 17:56:55 [INFO] RunAll: [Phase 5] Computing reference vocabulary overlap...
+2026-06-03 17:56:55 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 25 pred)
+2026-06-03 17:56:55 [INFO] RunAll:   Reference overlap: 0 exact, 0 token-overlap
+2026-06-03 17:56:55 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 21 pred)
+2026-06-03 17:56:55 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 22 pred)
+2026-06-03 17:56:55 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 25 pred)
+2026-06-03 17:56:55 [INFO] RunAll:   Lexicon:     25 terms
+2026-06-03 17:56:55 [INFO] RunAll:   Queries:     15
+2026-06-03 17:56:55 [INFO] RunAll:   Ref overlap: 0 exact / 0 token
+2026-06-03 17:56:55 [INFO] RunAll:   Time:        0.14s
+2026-06-03 17:56:55 [INFO] evaluation: Summary saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/baseline_margin_rule.json
+2026-06-03 17:56:55 [INFO] evaluation: Full lexicon (25 terms) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/baseline_margin_rule_lexicon.json
+2026-06-03 17:56:55 [INFO] evaluation: Candidate pool (58 total) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/baseline_margin_rule_candidates.json
+2026-06-03 17:56:55 [INFO] RunAll: 
+============================================================
+2026-06-03 17:56:55 [INFO] RunAll: EXPERIMENT: Margin + RAG-LLM Oracle
+2026-06-03 17:56:55 [INFO] RunAll: Strategy: margin, Oracle: rag_llm, NPMI: False
+2026-06-03 17:56:55 [INFO] RunAll: ============================================================
+2026-06-03 17:56:55 [INFO] RunAll: [Phase 1] Generating candidates...
+2026-06-03 17:56:55 [INFO] RunAll:   (reusing shared frequency model)
+2026-06-03 17:56:55 [INFO] candidate_generator: Extracting candidates (use_npmi=False)...
+2026-06-03 17:56:55 [INFO] candidate_generator: Extracted 349 candidates (2 unigrams)
+2026-06-03 17:56:55 [INFO] RunAll:   -> 349 candidates extracted
+2026-06-03 17:56:55 [INFO] RunAll: [Phase 1.5] Fragment filter: removed 291 grammatical fragments (58 remaining)
+2026-06-03 17:56:55 [INFO] RunAll: [Phase 2] Semantic mapping with SBERT + FAISS (combined = α*sim + β*wordhood)...
+2026-06-03 17:56:55 [INFO] RunAll:   (reusing shared SBERT model)
+2026-06-03 17:56:55 [INFO] semantic_mapper: Classified: 19 accept, 39 uncertain, 0 reject (using combined = 0.6*sim + 0.4*wordhood)
+2026-06-03 17:56:55 [INFO] RunAll: [Phase 3] Setting up oracle...
+2026-06-03 17:56:55 [INFO] oracle: KB loaded: 30 entries (hash=46205f73...)
+2026-06-03 17:56:55 [INFO] RunAll: [Phase 3.5] 19 auto-accepted candidates → keeping all (oracle labeling skipped; use --diagnose-phase35 to enable)
+2026-06-03 17:56:55 [INFO] RunAll: [Phase 4] Running active learning loop...
+2026-06-03 17:56:57 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:57:00 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:57:02 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:57:06 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:57:11 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:57:13 [INFO] active_learning: Round 1: selected=5, verified=4, lexicon=23, pool_remaining=34
+2026-06-03 17:57:13 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:57:16 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:57:19 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:57:22 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:57:25 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:57:28 [INFO] active_learning: Round 2: selected=5, verified=4, lexicon=27, pool_remaining=29
+2026-06-03 17:57:28 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:57:31 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:57:33 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:57:36 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:57:39 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:57:42 [INFO] active_learning: Round 3: selected=5, verified=5, lexicon=32, pool_remaining=24
+2026-06-03 17:57:42 [INFO] RunAll: [Phase 5] Computing reference vocabulary overlap...
+2026-06-03 17:57:42 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 32 pred)
+2026-06-03 17:57:42 [INFO] RunAll:   Reference overlap: 0 exact, 0 token-overlap
+2026-06-03 17:57:42 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 23 pred)
+2026-06-03 17:57:42 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 27 pred)
+2026-06-03 17:57:42 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 32 pred)
+2026-06-03 17:57:42 [INFO] RunAll:   Lexicon:     32 terms
+2026-06-03 17:57:42 [INFO] RunAll:   Queries:     15
+2026-06-03 17:57:42 [INFO] RunAll:   Ref overlap: 0 exact / 0 token
+2026-06-03 17:57:42 [INFO] RunAll:   Time:        46.79s
+2026-06-03 17:57:42 [INFO] evaluation: Summary saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/ablation_margin_llm.json
+2026-06-03 17:57:42 [INFO] evaluation: Full lexicon (32 terms) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/ablation_margin_llm_lexicon.json
+2026-06-03 17:57:42 [INFO] evaluation: Candidate pool (58 total) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/ablation_margin_llm_candidates.json
+2026-06-03 17:57:42 [INFO] RunAll: 
+============================================================
+2026-06-03 17:57:42 [INFO] RunAll: EXPERIMENT: TD-CAL + Rule Oracle
+2026-06-03 17:57:42 [INFO] RunAll: Strategy: tdcal, Oracle: rule, NPMI: False
+2026-06-03 17:57:42 [INFO] RunAll: ============================================================
+2026-06-03 17:57:42 [INFO] RunAll: [Phase 1] Generating candidates...
+2026-06-03 17:57:42 [INFO] RunAll:   (reusing shared frequency model)
+2026-06-03 17:57:42 [INFO] candidate_generator: Extracting candidates (use_npmi=False)...
+2026-06-03 17:57:42 [INFO] candidate_generator: Extracted 349 candidates (2 unigrams)
+2026-06-03 17:57:42 [INFO] RunAll:   -> 349 candidates extracted
+2026-06-03 17:57:42 [INFO] RunAll: [Phase 1.5] Fragment filter: removed 291 grammatical fragments (58 remaining)
+2026-06-03 17:57:42 [INFO] RunAll: [Phase 2] Semantic mapping with SBERT + FAISS (combined = α*sim + β*wordhood)...
+2026-06-03 17:57:42 [INFO] RunAll:   (reusing shared SBERT model)
+2026-06-03 17:57:42 [INFO] semantic_mapper: Classified: 19 accept, 39 uncertain, 0 reject (using combined = 0.6*sim + 0.4*wordhood)
+2026-06-03 17:57:42 [INFO] RunAll: [Phase 3] Setting up oracle...
+2026-06-03 17:57:42 [INFO] RunAll: [Phase 3.5] 19 auto-accepted candidates → keeping all (oracle labeling skipped; use --diagnose-phase35 to enable)
+2026-06-03 17:57:42 [INFO] RunAll: [Phase 4] Running active learning loop...
+2026-06-03 17:57:42 [INFO] active_learning: Round 1: selected=5, verified=2, lexicon=21, pool_remaining=34
+2026-06-03 17:57:42 [INFO] active_learning: Round 2: selected=5, verified=4, lexicon=25, pool_remaining=29
+2026-06-03 17:57:42 [INFO] active_learning: Round 3: selected=5, verified=2, lexicon=27, pool_remaining=24
+2026-06-03 17:57:42 [INFO] RunAll: [Phase 5] Computing reference vocabulary overlap...
+2026-06-03 17:57:42 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 27 pred)
+2026-06-03 17:57:42 [INFO] RunAll:   Reference overlap: 0 exact, 0 token-overlap
+2026-06-03 17:57:42 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 21 pred)
+2026-06-03 17:57:42 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 25 pred)
+2026-06-03 17:57:42 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 27 pred)
+2026-06-03 17:57:42 [INFO] RunAll:   Lexicon:     27 terms
+2026-06-03 17:57:42 [INFO] RunAll:   Queries:     15
+2026-06-03 17:57:42 [INFO] RunAll:   Ref overlap: 0 exact / 0 token
+2026-06-03 17:57:42 [INFO] RunAll:   Time:        0.19s
+2026-06-03 17:57:42 [INFO] evaluation: Summary saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/ablation_tdcal_rule.json
+2026-06-03 17:57:42 [INFO] evaluation: Full lexicon (27 terms) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/ablation_tdcal_rule_lexicon.json
+2026-06-03 17:57:42 [INFO] evaluation: Candidate pool (58 total) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/ablation_tdcal_rule_candidates.json
+2026-06-03 17:57:42 [INFO] RunAll: 
+============================================================
+2026-06-03 17:57:42 [INFO] RunAll: EXPERIMENT: Random + RAG-LLM Oracle
+2026-06-03 17:57:42 [INFO] RunAll: Strategy: random, Oracle: rag_llm, NPMI: False
+2026-06-03 17:57:42 [INFO] RunAll: ============================================================
+2026-06-03 17:57:42 [INFO] RunAll: [Phase 1] Generating candidates...
+2026-06-03 17:57:42 [INFO] RunAll:   (reusing shared frequency model)
+2026-06-03 17:57:42 [INFO] candidate_generator: Extracting candidates (use_npmi=False)...
+2026-06-03 17:57:42 [INFO] candidate_generator: Extracted 349 candidates (2 unigrams)
+2026-06-03 17:57:42 [INFO] RunAll:   -> 349 candidates extracted
+2026-06-03 17:57:42 [INFO] RunAll: [Phase 1.5] Fragment filter: removed 291 grammatical fragments (58 remaining)
+2026-06-03 17:57:42 [INFO] RunAll: [Phase 2] Semantic mapping with SBERT + FAISS (combined = α*sim + β*wordhood)...
+2026-06-03 17:57:42 [INFO] RunAll:   (reusing shared SBERT model)
+2026-06-03 17:57:43 [INFO] semantic_mapper: Classified: 19 accept, 39 uncertain, 0 reject (using combined = 0.6*sim + 0.4*wordhood)
+2026-06-03 17:57:43 [INFO] RunAll: [Phase 3] Setting up oracle...
+2026-06-03 17:57:43 [INFO] oracle: KB loaded: 30 entries (hash=46205f73...)
+2026-06-03 17:57:43 [INFO] RunAll: [Phase 3.5] 19 auto-accepted candidates → keeping all (oracle labeling skipped; use --diagnose-phase35 to enable)
+2026-06-03 17:57:43 [INFO] RunAll: [Phase 4] Running active learning loop...
+2026-06-03 17:57:43 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:57:45 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:57:48 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:57:51 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:57:53 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:57:56 [INFO] active_learning: Round 1: selected=5, verified=4, lexicon=23, pool_remaining=34
+2026-06-03 17:57:56 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:58:00 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:58:03 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:58:07 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:58:10 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:58:12 [INFO] active_learning: Round 2: selected=5, verified=5, lexicon=28, pool_remaining=29
+2026-06-03 17:58:13 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:58:15 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:58:18 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:58:21 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:58:24 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:58:28 [INFO] active_learning: Round 3: selected=5, verified=5, lexicon=33, pool_remaining=24
+2026-06-03 17:58:28 [INFO] RunAll: [Phase 5] Computing reference vocabulary overlap...
+2026-06-03 17:58:28 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 33 pred)
+2026-06-03 17:58:28 [INFO] RunAll:   Reference overlap: 0 exact, 0 token-overlap
+2026-06-03 17:58:28 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 23 pred)
+2026-06-03 17:58:28 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 28 pred)
+2026-06-03 17:58:28 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 33 pred)
+2026-06-03 17:58:28 [INFO] RunAll:   Lexicon:     33 terms
+2026-06-03 17:58:28 [INFO] RunAll:   Queries:     15
+2026-06-03 17:58:28 [INFO] RunAll:   Ref overlap: 0 exact / 0 token
+2026-06-03 17:58:28 [INFO] RunAll:   Time:        45.24s
+2026-06-03 17:58:28 [INFO] evaluation: Summary saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/random_llm.json
+2026-06-03 17:58:28 [INFO] evaluation: Full lexicon (33 terms) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/random_llm_lexicon.json
+2026-06-03 17:58:28 [INFO] evaluation: Candidate pool (58 total) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/random_llm_candidates.json
+2026-06-03 17:58:28 [INFO] RunAll: 
+============================================================
+2026-06-03 17:58:28 [INFO] RunAll: EXPERIMENT: TD-CAL + RAG-LLM Oracle (Proposed)
+2026-06-03 17:58:28 [INFO] RunAll: Strategy: tdcal, Oracle: rag_llm, NPMI: False
+2026-06-03 17:58:28 [INFO] RunAll: ============================================================
+2026-06-03 17:58:28 [INFO] RunAll: [Phase 1] Generating candidates...
+2026-06-03 17:58:28 [INFO] RunAll:   (reusing shared frequency model)
+2026-06-03 17:58:28 [INFO] candidate_generator: Extracting candidates (use_npmi=False)...
+2026-06-03 17:58:28 [INFO] candidate_generator: Extracted 349 candidates (2 unigrams)
+2026-06-03 17:58:28 [INFO] RunAll:   -> 349 candidates extracted
+2026-06-03 17:58:28 [INFO] RunAll: [Phase 1.5] Fragment filter: removed 291 grammatical fragments (58 remaining)
+2026-06-03 17:58:28 [INFO] RunAll: [Phase 2] Semantic mapping with SBERT + FAISS (combined = α*sim + β*wordhood)...
+2026-06-03 17:58:28 [INFO] RunAll:   (reusing shared SBERT model)
+2026-06-03 17:58:28 [INFO] semantic_mapper: Classified: 19 accept, 39 uncertain, 0 reject (using combined = 0.6*sim + 0.4*wordhood)
+2026-06-03 17:58:28 [INFO] RunAll: [Phase 3] Setting up oracle...
+2026-06-03 17:58:28 [INFO] oracle: KB loaded: 30 entries (hash=46205f73...)
+2026-06-03 17:58:28 [INFO] RunAll: [Phase 3.5] 19 auto-accepted candidates → keeping all (oracle labeling skipped; use --diagnose-phase35 to enable)
+2026-06-03 17:58:28 [INFO] RunAll: [Phase 4] Running active learning loop...
+2026-06-03 17:58:28 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:58:31 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:58:34 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:58:36 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:58:40 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:58:42 [INFO] active_learning: Round 1: selected=5, verified=4, lexicon=23, pool_remaining=34
+2026-06-03 17:58:43 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:58:45 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:58:47 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:58:51 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:58:54 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:58:56 [INFO] active_learning: Round 2: selected=5, verified=5, lexicon=28, pool_remaining=29
+2026-06-03 17:58:56 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:58:58 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:59:01 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:59:04 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:59:08 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:59:10 [INFO] active_learning: Round 3: selected=5, verified=4, lexicon=32, pool_remaining=24
+2026-06-03 17:59:10 [INFO] RunAll: [Phase 5] Computing reference vocabulary overlap...
+2026-06-03 17:59:11 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 32 pred)
+2026-06-03 17:59:11 [INFO] RunAll:   Reference overlap: 0 exact, 0 token-overlap
+2026-06-03 17:59:11 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 23 pred)
+2026-06-03 17:59:11 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 28 pred)
+2026-06-03 17:59:11 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 32 pred)
+2026-06-03 17:59:11 [INFO] RunAll:   Lexicon:     32 terms
+2026-06-03 17:59:11 [INFO] RunAll:   Queries:     15
+2026-06-03 17:59:11 [INFO] RunAll:   Ref overlap: 0 exact / 0 token
+2026-06-03 17:59:11 [INFO] RunAll:   Time:        42.81s
+2026-06-03 17:59:11 [INFO] evaluation: Summary saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/proposed_tdcal_llm.json
+2026-06-03 17:59:11 [INFO] evaluation: Full lexicon (32 terms) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/proposed_tdcal_llm_lexicon.json
+2026-06-03 17:59:11 [INFO] evaluation: Candidate pool (58 total) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/proposed_tdcal_llm_candidates.json
+2026-06-03 17:59:11 [INFO] RunAll: 
+============================================================
+2026-06-03 17:59:11 [INFO] RunAll: EXPERIMENT: Margin + Rule (Hard Gate)
+2026-06-03 17:59:11 [INFO] RunAll: Strategy: margin, Oracle: rule, NPMI: False
+2026-06-03 17:59:11 [INFO] RunAll: ============================================================
+2026-06-03 17:59:11 [INFO] RunAll: [Phase 1] Generating candidates...
+2026-06-03 17:59:11 [INFO] RunAll:   (reusing shared frequency model)
+2026-06-03 17:59:11 [INFO] candidate_generator: Extracting candidates (use_npmi=False)...
+2026-06-03 17:59:11 [INFO] candidate_generator: Extracted 41 candidates (0 unigrams)
+2026-06-03 17:59:11 [INFO] RunAll:   -> 41 candidates extracted
+2026-06-03 17:59:11 [INFO] RunAll: [Phase 1.5] Fragment filter: removed 32 grammatical fragments (9 remaining)
+2026-06-03 17:59:11 [INFO] RunAll: [Phase 2] Semantic mapping with SBERT + FAISS (combined = α*sim + β*wordhood)...
+2026-06-03 17:59:11 [INFO] RunAll:   (reusing shared SBERT model)
+2026-06-03 17:59:11 [INFO] semantic_mapper: Classified: 4 accept, 5 uncertain, 0 reject (using combined = 0.6*sim + 0.4*wordhood)
+2026-06-03 17:59:11 [INFO] RunAll: [Phase 3] Setting up oracle...
+2026-06-03 17:59:11 [INFO] RunAll: [Phase 3.5] 4 auto-accepted candidates → keeping all (oracle labeling skipped; use --diagnose-phase35 to enable)
+2026-06-03 17:59:11 [INFO] RunAll: [Phase 4] Running active learning loop...
+2026-06-03 17:59:11 [INFO] active_learning: Round 1: selected=5, verified=4, lexicon=8, pool_remaining=0
+2026-06-03 17:59:11 [INFO] active_learning: Round 2: pool empty, stopping
+2026-06-03 17:59:11 [INFO] RunAll: [Phase 5] Computing reference vocabulary overlap...
+2026-06-03 17:59:11 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 8 pred)
+2026-06-03 17:59:11 [INFO] RunAll:   Reference overlap: 0 exact, 0 token-overlap
+2026-06-03 17:59:11 [INFO] evaluation: Reference overlap: 0 exact, 0 token-overlap (out of 859 ref, 8 pred)
+2026-06-03 17:59:11 [INFO] RunAll:   Lexicon:     8 terms
+2026-06-03 17:59:11 [INFO] RunAll:   Queries:     5
+2026-06-03 17:59:11 [INFO] RunAll:   Ref overlap: 0 exact / 0 token
+2026-06-03 17:59:11 [INFO] RunAll:   Time:        0.12s
+2026-06-03 17:59:11 [INFO] evaluation: Summary saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/ablation_hard_gate_rule.json
+2026-06-03 17:59:11 [INFO] evaluation: Full lexicon (8 terms) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/ablation_hard_gate_rule_lexicon.json
+2026-06-03 17:59:11 [INFO] evaluation: Candidate pool (9 total) saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/ablation_hard_gate_rule_candidates.json
+2026-06-03 17:59:11 [INFO] RunAll: 
+============================================================
+2026-06-03 17:59:11 [INFO] RunAll: PRE-CALIBRATION COMPARISON
+2026-06-03 17:59:11 [INFO] RunAll: ============================================================
+2026-06-03 17:59:11 [INFO] RunAll: 
+============================================================
+2026-06-03 17:59:11 [INFO] RunAll: PHASE 6: POST-HOC LLM EVALUATION
+2026-06-03 17:59:11 [INFO] RunAll: ============================================================
+2026-06-03 17:59:11 [INFO] RunAll:   Loaded 25 terms from baseline_margin_rule_lexicon.json
+2026-06-03 17:59:11 [INFO] RunAll:   Loaded 32 terms from ablation_margin_llm_lexicon.json
+2026-06-03 17:59:11 [INFO] RunAll:   Loaded 27 terms from ablation_tdcal_rule_lexicon.json
+2026-06-03 17:59:11 [INFO] RunAll:   Loaded 33 terms from random_llm_lexicon.json
+2026-06-03 17:59:11 [INFO] RunAll:   Loaded 32 terms from proposed_tdcal_llm_lexicon.json
+2026-06-03 17:59:11 [INFO] RunAll:   Loaded 8 terms from ablation_hard_gate_rule_lexicon.json
+2026-06-03 17:59:11 [INFO] RunAll: [Phase 6a] Building calibration set from merged lexicons...
+2026-06-03 17:59:11 [INFO] RunAll:   Merged pool: 46 unique terms (from 157 total)
+2026-06-03 17:59:11 [INFO] evaluation: Human annotation sample: 13 boundary + 33 random = 46 total
+2026-06-03 17:59:11 [INFO] RunAll:   Calibration set: 46 terms for human annotation
+2026-06-03 17:59:11 [INFO] RunAll: [Phase 6b] Generating human annotation template...
+2026-06-03 17:59:11 [INFO] evaluation: Human annotation template saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/calibration_template.csv (46 terms)
+2026-06-03 17:59:11 [INFO] RunAll: [Phase 6c] Initializing LLM evaluator (deepseek-v4-pro)...
+2026-06-03 17:59:11 [INFO] RunAll: [Phase 6c] Evaluating ALL unique terms ONCE (merged pool = calibration set + all lexicons deduplicated)...
+2026-06-03 17:59:11 [INFO] RunAll:   Total unique terms to evaluate: 46
+2026-06-03 17:59:11 [INFO] RunAll:   (Of which 46 are in the calibration set)
+2026-06-03 17:59:11 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:59:19 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:59:31 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:59:39 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:59:48 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:59:58 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:00:02 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:00:12 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:00:17 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:00:28 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:00:35 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:00:41 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:00:50 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:00:55 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:01:01 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:01:05 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:01:10 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:01:16 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:01:35 [WARNING] oracle: Eval attempt 1/3 failed for '咋整': Empty LLM response — retrying in 1s
+2026-06-03 18:01:36 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:01:47 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:01:53 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:02:02 [INFO] RunAll:   ... 20/46 terms evaluated
+2026-06-03 18:02:03 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:02:11 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:02:18 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:02:22 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:02:27 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:02:36 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:02:42 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:02:46 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:02:51 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:03:05 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:03:21 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:03:38 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:03:56 [WARNING] oracle: Eval attempt 1/3 failed for '我家呢': Empty LLM response — retrying in 1s
+2026-06-03 18:03:57 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:04:06 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:04:13 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:04:22 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:04:27 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:04:36 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:04:51 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:04:55 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:05:00 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:05:07 [INFO] RunAll:   ... 40/46 terms evaluated
+2026-06-03 18:05:07 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:05:16 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:05:22 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:05:32 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:05:47 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:05:52 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:05:57 [INFO] RunAll:   ... 46/46 terms evaluated
+2026-06-03 18:05:57 [INFO] RunAll:   Evaluation complete: 46 terms assessed (46 LLM calls)
+2026-06-03 18:05:57 [INFO] RunAll:   Calibration results saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/calibration_results.json
+2026-06-03 18:05:57 [INFO] RunAll: [Phase 6d] Computing per-experiment metrics from cached evaluations...
+2026-06-03 18:05:57 [INFO] RunAll:   baseline_margin_rule: DP=1.0000 PDP=0.1600 |L_d|=25 |L_pd|=4 (25 total) -> baseline_margin_rule_eval.json
+2026-06-03 18:05:57 [INFO] RunAll:     -> baseline_margin_rule_dialect_lexicon.json (25 terms)
+2026-06-03 18:05:57 [INFO] RunAll:     -> baseline_margin_rule_power_dialect_lexicon.json (4 terms)
+2026-06-03 18:05:57 [INFO] RunAll:   ablation_margin_llm: DP=1.0000 PDP=0.1250 |L_d|=32 |L_pd|=4 (32 total) -> ablation_margin_llm_eval.json
+2026-06-03 18:05:57 [INFO] RunAll:     -> ablation_margin_llm_dialect_lexicon.json (32 terms)
+2026-06-03 18:05:57 [INFO] RunAll:     -> ablation_margin_llm_power_dialect_lexicon.json (4 terms)
+2026-06-03 18:05:57 [INFO] RunAll:   ablation_tdcal_rule: DP=1.0000 PDP=0.1481 |L_d|=27 |L_pd|=4 (27 total) -> ablation_tdcal_rule_eval.json
+2026-06-03 18:05:57 [INFO] RunAll:     -> ablation_tdcal_rule_dialect_lexicon.json (27 terms)
+2026-06-03 18:05:57 [INFO] RunAll:     -> ablation_tdcal_rule_power_dialect_lexicon.json (4 terms)
+2026-06-03 18:05:57 [INFO] RunAll:   random_llm: DP=1.0000 PDP=0.1212 |L_d|=33 |L_pd|=4 (33 total) -> random_llm_eval.json
+2026-06-03 18:05:57 [INFO] RunAll:     -> random_llm_dialect_lexicon.json (33 terms)
+2026-06-03 18:05:57 [INFO] RunAll:     -> random_llm_power_dialect_lexicon.json (4 terms)
+2026-06-03 18:05:57 [INFO] RunAll:   proposed_tdcal_llm: DP=1.0000 PDP=0.1250 |L_d|=32 |L_pd|=4 (32 total) -> proposed_tdcal_llm_eval.json
+2026-06-03 18:05:57 [INFO] RunAll:     -> proposed_tdcal_llm_dialect_lexicon.json (32 terms)
+2026-06-03 18:05:57 [INFO] RunAll:     -> proposed_tdcal_llm_power_dialect_lexicon.json (4 terms)
+2026-06-03 18:05:57 [INFO] RunAll:   ablation_hard_gate_rule: DP=1.0000 PDP=0.6250 |L_d|=8 |L_pd|=5 (8 total) -> ablation_hard_gate_rule_eval.json
+2026-06-03 18:05:57 [INFO] RunAll:     -> ablation_hard_gate_rule_dialect_lexicon.json (8 terms)
+2026-06-03 18:05:57 [INFO] RunAll:     -> ablation_hard_gate_rule_power_dialect_lexicon.json (5 terms)
+2026-06-03 18:05:57 [INFO] RunAll:   Evaluation summary saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/evaluation_summary.json
+2026-06-03 18:05:57 [INFO] RunAll: [Phase 6e] Generating final comparison table...
+2026-06-03 18:05:57 [INFO] RunAll:   Comparison table saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/comparison_table.md
+
+# Phase 6 Evaluation
+
+| Model | DP | PDP | L_d | L_pd | AvgConf | Ref(Exact) | Ref(Token) | Lexicon | Queries |
+|-------|----|-----|-------|--------|---------|------------|------------|---------|---------|
+| Margin + Rule (Hard Gate) | 1.0000 | 0.6250 | 8 | 5 | 0.9188 | 0 | 0 | 8 | 5 |
+| Margin + Rule (Soft-Label baseline) | 1.0000 | 0.1600 | 25 | 4 | 0.9060 | 0 | 0 | 25 | 15 |
+| Margin + RAG-LLM Oracle | 1.0000 | 0.1250 | 32 | 4 | 0.8953 | 0 | 0 | 32 | 15 |
+| TD-CAL + Rule Oracle | 1.0000 | 0.1481 | 27 | 4 | 0.9056 | 0 | 0 | 27 | 15 |
+| Random + RAG-LLM Oracle | 1.0000 | 0.1212 | 33 | 4 | 0.8976 | 0 | 0 | 33 | 15 |
+| TD-CAL + RAG-LLM Oracle (Proposed) | 1.0000 | 0.1250 | 32 | 4 | 0.8984 | 0 | 0 | 32 | 15 |
+2026-06-03 18:05:57 [INFO] RunAll:   Comparison table appended to experiment.log
+2026-06-03 18:05:57 [INFO] RunAll: 
+Phase 6 complete.
+2026-06-03 18:05:57 [INFO] RunAll: Next step: have a human expert annotate 'calibration_template.csv',
+2026-06-03 18:05:57 [INFO] RunAll:   then run compute_llm_human_agreement() to validate the evaluator.
+2026-06-03 18:05:57 [INFO] RunAll: 
+Human annotation calibration not run.
+2026-06-03 18:05:57 [INFO] RunAll: To calibrate: annotate 'calibration_template.csv', save as
+2026-06-03 18:05:57 [INFO] RunAll:   'calibration_annotated.csv', then run:
+2026-06-03 18:05:57 [INFO] RunAll:   python run_all.py --annotations results/calibration_annotated.csv
+2026-06-03 18:05:57 [INFO] RunAll: 
+Experiments finished (6 succeeded).
+2026-06-03 18:14:03 [INFO] RunAll: 
+============================================================
+2026-06-03 18:14:03 [INFO] RunAll: COHEN'S KAPPA CALIBRATION
+2026-06-03 18:14:03 [INFO] RunAll: ============================================================
+2026-06-03 18:14:03 [INFO] evaluation: Loaded 46 human annotations from experiments/results/calibration_annotated.csv
+2026-06-03 18:14:03 [WARNING] evaluation: κ_dialect: degenerate prevalence (p_e=1.0000, n_true=46, n_false=0).  κ=1.0000 should be interpreted with caution.
+2026-06-03 18:14:03 [INFO] evaluation: LLM-Human agreement (n=46): κ_dialect=1.0 CI95=[None, None], κ_power=0.8487 CI95=[0.6436, 1.0]
+2026-06-03 18:14:03 [INFO] RunAll:   Compared: 46 terms
+2026-06-03 18:14:03 [INFO] RunAll:   Kappa (has_dialect_features): 1.0
+2026-06-03 18:14:03 [INFO] RunAll:   Kappa (power_domain_relevance):0.8487
+2026-06-03 18:14:03 [INFO] RunAll:     has_dialect_features: PASS
+2026-06-03 18:14:03 [INFO] RunAll:     power_domain_relevance: PASS
+2026-06-03 18:14:03 [INFO] RunAll:   Kappa report saved to /nfs1/zangzhaoxiang/slang_lexicon/experiments/results/calibration_kappa.json
